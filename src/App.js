@@ -15,14 +15,16 @@ function App() {
       ).then(res => res.json())
       .then(page => setPage(page))
     }
-    const result = fetchData();
-    console.log(result);
+    fetchData();
   }, [])
+
+  if (!page || !page.content || !page.content.rendered)
+    return (<>Patientez pendant le chargement</>);
+
   return (
     <div className="App">
       <header className="App-header">
-        <p>WIP - Landing page soon</p>
-        <pre>{JSON.stringify(page)}</pre>
+        <div dangerouslySetInnerHTML={{__html: page.content.rendered}} />
       </header>
     </div>
   );
