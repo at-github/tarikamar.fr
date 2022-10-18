@@ -1,25 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import {QueryClient, QueryClientProvider, useQuery} from 'react-query';
+import {ReactQueryDevtools} from 'react-query/devtools';
+
 import './App.css';
 
-function App() {
-  const [page, setPage] = useState(null);
+const queryClient = new QueryClient()
 
-  useEffect(() => {
-    async function fetchData() {
-      return await fetch(
-        'https://api.tarikamar.fr/wp-json/wp/v2/pages/5'
-        , {
-          credentials: 'include'
-          , mode: 'cors'
-        }
-      ).then(res => res.json())
-      .then(page => setPage(page))
-    }
-    fetchData();
-  }, [])
+function Content() {
+  const {isLoading, error, data} = useQuery('servicesData', () =>
+    fetch(
+      'https://api.tarikamar.fr/wp-json/wp/v2/pages/5'
+      , {
+        credentials: 'include'
+        , mode: 'cors'
+      }
+    ).then(res => res.json())
+  )
+  const page = data || '';
 
-  if (!page || !page.content || !page.content.rendered)
-    return (<>Patientez pendant le chargement</>);
+  if (isLoading) return 'Chargement en cours…'
+
+  if (error) return 'Une erreur est survenue'
 
   return (
     <div className="App">
@@ -28,6 +28,15 @@ function App() {
       </header>
     </div>
   );
+}
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Content />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  )
 }
 
 export default App;
