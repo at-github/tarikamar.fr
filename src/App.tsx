@@ -3,6 +3,12 @@ import {ReactQueryDevtools} from 'react-query/devtools';
 
 import './App.css';
 
+interface ResponseInterface {
+  content: {
+    rendered: string
+  }
+}
+
 const queryClient = new QueryClient()
 
 function Content() {
@@ -15,11 +21,11 @@ function Content() {
       }
     ).then(res => res.json())
   )
-  const page = data || '';
+  const page: ResponseInterface = data || '';
 
-  if (isLoading) return 'Chargement en cours…'
+  if (isLoading) return <>'Chargement en cours…'</>
 
-  if (error) return 'Une erreur est survenue'
+  if (error) return <>'Une erreur est survenue'</>
 
   return (
     <div className="App">
