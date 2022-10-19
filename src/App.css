@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab');
+/** GENERAL **/
 
 pre {
   white-space: break-spaces;
@@ -9,6 +10,11 @@ pre {
 body {
   background-color: #EEE;
   color: #111;
+  font-size: 22px;
+}
+
+ul {
+  list-style-type: circle;
 }
 
 .App {
@@ -19,14 +25,26 @@ body {
   margin: 0 auto;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 h1 {
   font-family: 'Roboto Slab', serif;
   text-align: center;
   text-transform: uppercase;
   margin: 100px 0;
+  font-size: 6rem;
 }
 
-h1 span {
+h2 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: normal;
+  margin: 80px 0 20px;
+}
+/** MAIN TITLE **/
+
+h1#title-main span {
   display: block;
 }
 
@@ -44,3 +62,18 @@ h1 span {
   font-size: 4rem;
   line-height: 2rem;
 }
+
+/** WORDPRESS TEXT **/
+.has-text-align-right {
+  text-align: right;
+}
+
+/** WORDPRESS COLUMNS **/
+.wp-block-columns {
+  display: flex;
+}
+
+.wp-block-column {
+  flex: 1;
+}
+
