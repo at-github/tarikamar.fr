@@ -28,11 +28,10 @@ function Content() {
   if (error) return <>'Une erreur est survenue'</>
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div dangerouslySetInnerHTML={{__html: page.content.rendered}} />
-      </header>
-    </div>
+    <div
+      className="App"
+      dangerouslySetInnerHTML={{__html: page.content.rendered}}
+     />
   );
 }
 
