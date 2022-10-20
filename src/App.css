@@ -50,9 +50,11 @@ h1 {
 }
 
 h2 {
+  margin: 80px 0 10px;
   font-family: 'Roboto Slab', serif;
   font-weight: normal;
-  margin: 80px 0 10px;
+  font-size: 3rem;
+  color: #333;
 }
 
 .big-row {
@@ -91,6 +93,10 @@ h1#title-main span {
   text-align: right;
 }
 
+.has-text-align-center {
+  text-align: center;
+}
+
 /** WORDPRESS COLUMNS **/
 .wp-block-columns {
   display: flex;
@@ -99,6 +105,27 @@ h1#title-main span {
 
 .wp-block-column {
   flex: 1;
+}
+
+/** SOLUTIONS **/
+
+.solutions .solution {
+  background-repeat: no-repeat;
+}
+
+.solution-design {
+  background-image: url('/public/img/symbol-design.png');
+  background-position: 14px 72px;
+}
+
+.solution-site {
+  background-image: url('/public/img/symbol-site.png');
+  background-position: 30px 91px;
+}
+
+.solution-tools {
+  background-image: url('/public/img/symbol-tools.png');
+  background-position: 195px 95px;
 }
 
 @media (max-width: 600px) {
@@ -112,7 +139,7 @@ h1#title-main span {
   }
   
   h2 {
-    margin: 40px 0 0;
+    margin: 40px 0 10px;
   }
 
   /** MAIN TITLE **/
@@ -134,5 +161,19 @@ h1#title-main span {
   /** WORDPRESS COLUMNS **/
   .wp-block-columns {
     display: block;
+  }
+
+  /** SOLUTIONS **/
+
+  .solution-design {
+    background-position: 48px -3px;
+  }
+
+  .solution-site {
+    background-position: 64px 11px;
+  }
+
+  .solution-tools {
+    background-position: 232px 15px;
   }
 }
