@@ -31,7 +31,7 @@ function Content() {
     <div
       className="App"
       dangerouslySetInnerHTML={{__html: page.content.rendered}}
-     />
+    />
   );
 }
 
