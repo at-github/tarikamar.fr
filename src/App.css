@@ -27,9 +27,6 @@ body {
   margin: 0 auto;
 }
 
-.App {
-}
-
 ul {
   list-style-type: circle;
   margin: 0;
@@ -55,6 +52,10 @@ h2 {
   font-weight: normal;
   font-size: 3rem;
   color: #333;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 
 .big-row {
@@ -115,17 +116,24 @@ h1#title-main span {
 
 .solution-design {
   background-image: url('/public/img/symbol-design.png');
-  background-position: 14px 72px;
+  background-position: 26px 72px;
 }
 
 .solution-site {
   background-image: url('/public/img/symbol-site.png');
-  background-position: 30px 91px;
+  background-position: 40px 91px;
 }
 
 .solution-tools {
   background-image: url('/public/img/symbol-tools.png');
-  background-position: 195px 95px;
+  background-position: 205px 95px;
+}
+
+/** ABOUT ME **/
+.about-me {
+  background-repeat: no-repeat;
+  background-image: url('/public/img/hello.png');
+  background-position: 700px 900px;
 }
 
 @media (max-width: 600px) {
@@ -140,6 +148,7 @@ h1#title-main span {
   
   h2 {
     margin: 40px 0 10px;
+    font-size: 2.8rem;
   }
 
   /** MAIN TITLE **/
@@ -175,5 +184,10 @@ h1#title-main span {
 
   .solution-tools {
     background-position: 232px 15px;
+  }
+
+  /** ABOUT ME **/
+  .about-me {
+    background-position: 0 910px;
   }
 }

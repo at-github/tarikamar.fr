@@ -23,7 +23,7 @@ function Content() {
   )
   const page: ResponseInterface = data || '';
 
-  if (isLoading) return <>'Chargement en cours…'</>
+  if (isLoading) return <>Chargement en cours…</>
 
   if (error) return <>'Une erreur est survenue'</>
 
