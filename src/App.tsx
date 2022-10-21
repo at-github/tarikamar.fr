@@ -28,10 +28,34 @@ function Content() {
   if (error) return <>'Une erreur est survenue'</>
 
   return (
-    <div
-      className="App"
-      dangerouslySetInnerHTML={{__html: page.content.rendered}}
-    />
+    <>
+      <div className="App">
+        <div
+          className="editorial"
+          dangerouslySetInnerHTML={{__html: page.content.rendered}}
+        />
+        <div className="big-row">
+          <div>
+            <h1>Intéressé ?</h1>
+            <form>
+              <div className="form-row">
+                <input type="email" placeholder="Votre email" />
+              </div>
+              <div className="form-row">
+                <textarea
+                  placeholder="Donnez moi une idée de l’aide dont vous avez besoin"
+                  rows={4}
+                  cols={45}
+                />
+              </div>
+              <div className="form-row">
+                <button type="submit" className="CTA">Contactez-moi</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
