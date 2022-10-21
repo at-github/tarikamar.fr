@@ -229,7 +229,6 @@ h1#title-main span {
   }
 
   /** SOLUTIONS **/
-
   .solution-design {
     background-position: 146px -2px;
   }
@@ -246,5 +245,70 @@ h1#title-main span {
   .about-me h1 {
     background-position: 445px 15px;
     background-size: 15%;
+  }
+}
+
+/** FAIRPHONE 3+ **/
+@media (max-width: 361px) {
+  body {
+    font-size: 16px;
+  }
+
+  #soon {
+    font-size: 4.5rem;
+    line-height: 2rem;
+  }
+
+  #my-services {
+    font-size: 1.37rem;
+    line-height: 2.9rem;
+  }
+
+  #your-disposal {
+    font-size: 1.8rem;
+    line-height: 0.4rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin: 25px 0;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin: 20px 0 10px;
+  }
+
+  ul {
+    padding: 0 0 0 120px;
+    line-height: 30px;
+  }
+
+  p {
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  /** WORDPRESS COLUMNS **/
+  .wp-block-columns {
+    padding: 0;
+  }
+
+  /** SOLUTIONS **/
+  .solution-design {
+    background-position: 0 70%;
+  }
+
+  .solution-site {
+    background-position: 0 85%;
+  }
+
+  .solution-tools {
+    background-position: 0 80%;
+  }
+
+  /** ABOUT ME **/
+  .about-me h1 {
+    background-position: 84% 0;
   }
 }
