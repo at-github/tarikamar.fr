@@ -248,6 +248,60 @@ h1#title-main span {
   }
 }
 
+@media (max-width: 376px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    margin: 50px 0;
+    font-size: 2.5rem;
+  }
+
+  #soon {
+    font-size: 4.5rem;
+    line-height: 2rem;
+  }
+
+  #my-services {
+    font-size: 1.37rem;
+    line-height: 2.9rem;
+  }
+
+  #your-disposal {
+    font-size: 1.8rem;
+    line-height: 0.4rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin: 20px 0 10px;
+  }
+
+  ul {
+    padding: 0 0 0 120px;
+    line-height: 30px;
+  }
+
+  /** SOLUTIONS **/
+  .solution-design {
+    background-position: 0 70%;
+  }
+
+  .solution-site {
+    background-position: 0 85%;
+  }
+
+  .solution-tools {
+    background-position: 0 80%;
+  }
+
+  /** ABOUT ME **/
+  .about-me h1 {
+    background-position: 90% 0;
+  }
+}
+
 /** FAIRPHONE 3+ **/
 @media (max-width: 361px) {
   body {
