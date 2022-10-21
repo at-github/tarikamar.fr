@@ -27,6 +27,10 @@ body {
   margin: 0 auto;
 }
 
+p {
+  padding: 5px 10px;
+}
+
 ul {
   list-style-type: circle;
   margin: 0;
@@ -102,6 +106,7 @@ h1#title-main span {
 .wp-block-columns {
   display: flex;
   column-gap: 50px;
+  padding: 0 20px;
 }
 
 .wp-block-column {
@@ -182,35 +187,40 @@ h1#title-main span {
 
 }
 
-@media (max-width: 600px) {
+/** NEXUS 7 **/
+@media (max-width: 601px) {
   body {
     font-size: 20px;
   }
 
   h1 {
     margin: 50px 0;
-    font-size: 2.75rem;
+    font-size: 4.5rem;
   }
   
   h2 {
-    margin: 40px 0 10px;
+    margin: 40px 0 20px;
     font-size: 2.8rem;
+  }
+
+  ul {
+    padding: 0 0 0 100px;
   }
 
   /** MAIN TITLE **/
   #soon {
-    font-size: 5rem;
-    line-height: 2rem;
-  }
-
-  #my-services {
-    font-size: 1.52rem;
+    font-size: 8rem;
     line-height: 4rem;
   }
 
+  #my-services {
+    font-size: 2.45rem;
+    line-height: 5rem;
+  }
+
   #your-disposal {
-    font-size: 2rem;
-    line-height: 0rem;
+    font-size: 3.2rem;
+    line-height: 1rem;
   }
 
   /** WORDPRESS COLUMNS **/
@@ -221,19 +231,20 @@ h1#title-main span {
   /** SOLUTIONS **/
 
   .solution-design {
-    background-position: 48px -3px;
+    background-position: 146px -2px;
   }
 
   .solution-site {
-    background-position: 64px 11px;
+    background-position: 159px 11px;
   }
 
   .solution-tools {
-    background-position: 232px 15px;
+    background-position: 325px 15px;
   }
 
   /** ABOUT ME **/
-  .about-me {
-    background-position: 0 910px;
+  .about-me h1 {
+    background-position: 445px 15px;
+    background-size: 15%;
   }
 }
