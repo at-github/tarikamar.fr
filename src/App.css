@@ -136,6 +136,12 @@ h1#title-main span {
   background-position: 80% 0;
 }
 
+@media (max-width: 1024px) {
+  .about-me h1 {
+    background-position: 82% 0;
+  }
+}
+
 @media (max-width: 600px) {
   body {
     font-size: 20px;
