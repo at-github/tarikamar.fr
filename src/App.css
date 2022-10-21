@@ -130,10 +130,10 @@ h1#title-main span {
 }
 
 /** ABOUT ME **/
-.about-me {
+.about-me h1 {
   background-repeat: no-repeat;
   background-image: url('/public/img/hello.png');
-  background-position: 700px 900px;
+  background-position: 80% 0;
 }
 
 @media (max-width: 600px) {
