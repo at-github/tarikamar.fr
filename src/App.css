@@ -54,10 +54,6 @@ h2 {
   color: #333;
 }
 
-form {
-  padding: 10px;
-}
-
 input, textarea, button {
   border: none;
   padding: 10px 15px;
@@ -74,7 +70,7 @@ button {
 }
 
 .form-row {
-  margin: 5px;
+  margin: 5px 0;
 }
 
 .CTA {
@@ -100,6 +96,7 @@ button {
 
 .big-row {
   min-height: 100vh;
+  max-width: 90vw;
   display: flex;
   align-items: center;
   scroll-snap-align: start;
@@ -267,7 +264,7 @@ h1#title-main span {
   
   h2 {
     margin: 40px 0 20px;
-    font-size: 8vw;
+    font-size: 7.7vw;
   }
 
   ul {
@@ -417,9 +414,5 @@ h1#title-main span {
 
   input, textarea, button {
     font-size: 0.8rem;
-  }
-
-  .form-row {
-    margin: 0 5px;
   }
 }
