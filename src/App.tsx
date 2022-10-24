@@ -1,5 +1,6 @@
 import {QueryClient, QueryClientProvider, useQuery} from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools';
+import Loading from './components/Loading';
 
 import './App.css';
 
@@ -23,7 +24,7 @@ function Content() {
   )
   const page: ResponseInterface = data || '';
 
-  if (isLoading) return <>Chargement en cours…</>
+  if (isLoading) return <Loading />;
 
   if (error) return <>'Une erreur est survenue'</>
 
