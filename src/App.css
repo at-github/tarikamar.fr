@@ -136,22 +136,20 @@ h1#title-main span {
 
 .solutions .solution {
   background-repeat: no-repeat;
+  background-position: 50% 0;
 }
 
 .solution-design {
   background-image: url('/public/img/symbol-design.png');
-  background-position: 26px 72px;
 }
 
 .solution-site {
   background-image: url('/public/img/symbol-site.png');
-  background-position: 40px 91px;
   background-size: 90px;
 }
 
 .solution-tools {
   background-image: url('/public/img/symbol-tools.png');
-  background-position: 205px 95px;
   background-size: 95px;
 }
 
@@ -219,16 +217,7 @@ h1#title-main span {
   }
 }
 
-/** IPAD AIR portrait **/
-@media (max-width: 768px) {
-  body {
-    font-size: 20px;
-  }
-
-  ul {
-    padding: 0 0 0 10px;
-  }
-
+@media (max-width: 834px) {
   .wp-block-columns {
     column-gap: 20px;
     padding: 0 10px;
@@ -245,6 +234,39 @@ h1#title-main span {
 
   .solution-tools {
     background-position: 161px 100px;
+  }
+
+}
+
+/** IPAD AIR portrait **/
+@media (max-width: 768px) {
+  body {
+    font-size: 20px;
+  }
+
+  ul {
+    padding: 0 0 0 10px;
+  }
+
+  .solutions .wp-block-columns {
+    display: block;
+  }
+
+  .solutions .wp-block-columns .wp-block-column {
+    display: flex;
+    margin-top: 50px;
+  }
+
+  .wp-block-column > * {
+    flex: 1;
+  }
+
+  .solutions h2 {
+    margin: 0;
+  }
+
+  .solutions .solution {
+    background-position: 20% 100%;
   }
 
   /** ABOUT ME **/
@@ -264,15 +286,6 @@ h1#title-main span {
     margin: 50px 0;
   }
   
-  h2 {
-    margin: 40px 0 20px;
-    font-size: 7.7vw;
-  }
-
-  ul {
-    padding: 0 0 0 100px;
-  }
-
   input, button {
     width: 80vw;
   }
@@ -294,20 +307,6 @@ h1#title-main span {
     text-align: right;
   }
 
-
-  /** SOLUTIONS **/
-  .solution-design {
-    background-position: 146px -2px;
-  }
-
-  .solution-site {
-    background-position: 159px 11px;
-  }
-
-  .solution-tools {
-    background-position: 325px 15px;
-  }
-
   /** ABOUT ME **/
   .about-me h1 {
     background-position: 445px 15px;
@@ -325,17 +324,8 @@ h1#title-main span {
   }
 
   h2 {
+    font-size: 7.7vw;
     margin: 20px 0 10px;
-  }
-
-  ul {
-    padding: 0 0 0 120px;
-    line-height: 30px;
-  }
-
-  /** SOLUTIONS **/
-  .solution {
-    background-position: 0 80%;
   }
 
   /** ABOUT ME **/
@@ -356,11 +346,6 @@ h1#title-main span {
 
   h2 {
     margin: 20px 0 10px;
-  }
-
-  ul {
-    padding: 0 0 0 120px;
-    line-height: 30px;
   }
 
   p {
