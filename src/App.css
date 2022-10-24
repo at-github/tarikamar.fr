@@ -116,18 +116,18 @@ h1#title-main span {
 }
 
 #soon {
-  font-size: 10rem;
-  line-height: 6rem;
+  font-size: 20vw;
+  line-height: 14vw;
 }
 
 #my-services {
-  font-size: 3.05rem;
-  line-height: 5rem;
+  font-size: 6vw;
+  line-height: 8vw;
 }
 
 #your-disposal {
-  font-size: 4rem;
-  line-height: 2rem;
+  font-size: 8vw;
+  line-height: 7vw;
 }
 
 /** WORDPRESS TEXT **/
@@ -247,22 +247,6 @@ h1#title-main span {
     padding: 20px 15px;
   }
 
-  /** MAIN TITLE **/
-  #soon {
-    font-size: 8rem;
-    line-height: 4rem;
-  }
-
-  #my-services {
-    font-size: 2.45rem;
-    line-height: 5rem;
-  }
-
-  #your-disposal {
-    font-size: 3.2rem;
-    line-height: 1rem;
-  }
-
   /** WORDPRESS COLUMNS **/
   .wp-block-columns {
     display: block;
@@ -306,21 +290,6 @@ h1#title-main span {
     margin: 50px 0;
   }
 
-  #soon {
-    font-size: 4.5rem;
-    line-height: 2rem;
-  }
-
-  #my-services {
-    font-size: 1.37rem;
-    line-height: 2.9rem;
-  }
-
-  #your-disposal {
-    font-size: 1.71rem;
-    line-height: 0.4rem;
-  }
-
   h2 {
     margin: 20px 0 10px;
   }
@@ -353,21 +322,6 @@ h1#title-main span {
 @media (max-width: 361px) {
   body {
     font-size: 16px;
-  }
-
-  #soon {
-    font-size: 4.5rem;
-    line-height: 2rem;
-  }
-
-  #my-services {
-    font-size: 1.37rem;
-    line-height: 2.9rem;
-  }
-
-  #your-disposal {
-    font-size: 1.8rem;
-    line-height: 0.4rem;
   }
 
   h1 {
