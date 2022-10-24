@@ -115,21 +115,6 @@ h1#title-main span {
   display: block;
 }
 
-#soon {
-  font-size: 20vw;
-  line-height: 14vw;
-}
-
-#my-services {
-  font-size: 6vw;
-  line-height: 8vw;
-}
-
-#your-disposal {
-  font-size: 8vw;
-  line-height: 7vw;
-}
-
 /** WORDPRESS TEXT **/
 .has-text-align-right {
   text-align: right;
@@ -178,10 +163,60 @@ h1#title-main span {
   background-position: 80% 0;
 }
 
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 6rem;
+  }
+
+  /** MAIN TITLE **/
+  #soon {
+    font-size: 14rem;
+    line-height: 12rem;
+  }
+
+  #my-services {
+    font-size: 4.3rem;
+    line-height: 4rem;
+  }
+
+  #your-disposal {
+    font-size: 5.7rem;
+    line-height: 6rem;;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+}
+
 /** IPAD PRO portrait **/
 @media (max-width: 1024px) {
   .about-me h1 {
     background-position: 82% 0;
+  }
+
+  h1 {
+    font-size: 9vw;
+  }
+
+  /** MAIN TITLE **/
+  #soon {
+    font-size: 20vw;
+    line-height: 17vw;;
+  }
+
+  #my-services {
+    font-size: 6.1vw;
+    line-height: 6vw;;
+  }
+
+  #your-disposal {
+    font-size: 8vw;
+    line-height: 8vw;;
+  }
+
+  h2 {
+    font-size: 5vw;
   }
 }
 
@@ -322,6 +357,21 @@ h1#title-main span {
 @media (max-width: 361px) {
   body {
     font-size: 16px;
+  }
+
+  #soon {
+    font-size: 4.5rem;
+    line-height: 2rem;
+  }
+
+  #my-services {
+    font-size: 1.37rem;
+    line-height: 2.9rem;
+  }
+
+  #your-disposal {
+    font-size: 1.8rem;
+    line-height: 0.4rem;
   }
 
   h1 {
