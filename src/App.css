@@ -43,14 +43,14 @@ h1 {
   text-align: center;
   text-transform: uppercase;
   margin: 50px 0;
-  font-size: 6rem;
+  font-size: 11vw;
 }
 
 h2 {
   margin: 80px 0 10px;
   font-family: 'Roboto Slab', serif;
   font-weight: normal;
-  font-size: 3rem;
+  font-size: 5vw;
   color: #333;
 }
 
@@ -108,6 +108,7 @@ button {
 .big-row > * {
   width: 100%;
 }
+
 /** MAIN TITLE **/
 
 h1#title-main span {
@@ -190,10 +191,6 @@ h1#title-main span {
     font-size: 20px;
   }
 
-  h1 {
-    font-size: 5.8rem;
-  }
-
   ul {
     padding: 0 0 0 10px;
   }
@@ -231,12 +228,11 @@ h1#title-main span {
 
   h1 {
     margin: 50px 0;
-    font-size: 4.5rem;
   }
   
   h2 {
     margin: 40px 0 20px;
-    font-size: 2.7rem;
+    font-size: 8vw;
   }
 
   ul {
@@ -308,7 +304,6 @@ h1#title-main span {
 
   h1 {
     margin: 50px 0;
-    font-size: 2.5rem;
   }
 
   #soon {
@@ -327,7 +322,6 @@ h1#title-main span {
   }
 
   h2 {
-    font-size: 1.4rem;
     margin: 20px 0 10px;
   }
 
@@ -377,12 +371,10 @@ h1#title-main span {
   }
 
   h1 {
-    font-size: 2rem;
     margin: 25px 0;
   }
 
   h2 {
-    font-size: 1.4rem;
     margin: 20px 0 10px;
   }
 
