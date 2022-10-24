@@ -154,10 +154,12 @@ h1#title-main span {
 }
 
 /** ABOUT ME **/
-.about-me h1 {
+.about-me .hello {
+  display: block;
   background-repeat: no-repeat;
   background-image: url('/public/img/hello.png');
   background-position: 80% 0;
+  background-size: contain;
 }
 
 @media (min-width: 1024px) {
