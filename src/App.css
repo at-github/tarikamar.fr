@@ -272,6 +272,15 @@ h1#title-main span {
     display: block;
   }
 
+  .wp-block-columns.question-answer .wp-block-column {
+    margin-top: 60px;
+  }
+
+  .wp-block-columns.question-answer .wp-block-column:last-child {
+    text-align: right;
+  }
+
+
   /** SOLUTIONS **/
   .solution-design {
     background-position: 146px -2px;
