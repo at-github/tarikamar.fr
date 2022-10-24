@@ -146,11 +146,13 @@ h1#title-main span {
 .solution-site {
   background-image: url('/public/img/symbol-site.png');
   background-position: 40px 91px;
+  background-size: 90px;
 }
 
 .solution-tools {
   background-image: url('/public/img/symbol-tools.png');
   background-position: 205px 95px;
+  background-size: 95px;
 }
 
 /** ABOUT ME **/
@@ -332,15 +334,7 @@ h1#title-main span {
   }
 
   /** SOLUTIONS **/
-  .solution-design {
-    background-position: 0 70%;
-  }
-
-  .solution-site {
-    background-position: 0 85%;
-  }
-
-  .solution-tools {
+  .solution {
     background-position: 0 80%;
   }
 
@@ -354,21 +348,6 @@ h1#title-main span {
 @media (max-width: 361px) {
   body {
     font-size: 16px;
-  }
-
-  #soon {
-    font-size: 4.5rem;
-    line-height: 2rem;
-  }
-
-  #my-services {
-    font-size: 1.37rem;
-    line-height: 2.9rem;
-  }
-
-  #your-disposal {
-    font-size: 1.8rem;
-    line-height: 0.4rem;
   }
 
   h1 {
