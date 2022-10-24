@@ -65,6 +65,10 @@ input, textarea, button {
   font-size: 1.5rem;
 }
 
+textarea {
+  max-width: 80vw;
+}
+
 button {
   cursor: pointer;
 }
@@ -79,6 +83,7 @@ button {
   padding: 20px 40px;
   box-shadow: rgb(0 0 0 / 25%) 10px 10px 10px 0px;
   transition: box-shadow 100ms ease-out;
+  box-sizing: content-box;
 }
 
 .CTA:hover {
@@ -236,6 +241,14 @@ h1#title-main span {
 
   ul {
     padding: 0 0 0 100px;
+  }
+
+  input, button {
+    width: 80vw;
+  }
+
+  .CTA {
+    padding: 20px 15px;
   }
 
   /** MAIN TITLE **/
@@ -397,16 +410,8 @@ h1#title-main span {
     background-position: 84% 0;
   }
 
-  form {
-    max-width: 75vw;
-  }
-
   input, textarea, button {
     font-size: 0.8rem;
-  }
-
-  input, textarea {
-    width: 100%;
   }
 
   .form-row {
