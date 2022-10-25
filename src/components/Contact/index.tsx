@@ -87,6 +87,12 @@ export default class Contact extends React.Component<
 
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (
+      this.state.email.valid === false
+      || this.state.message.valid === false
+    ) {
+      return
+    }
     this.setState((prevState: InterfaceState) =>
       ({form: {...prevState.form, state: EnumFormState.processing}})
     )
