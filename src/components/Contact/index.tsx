@@ -8,6 +8,10 @@ interface interfaceState {
     edited: boolean
     , value: string
     , valid: boolean
+  }, message: {
+    edited: boolean
+    , value: string
+    , valid: boolean
   }
 }
 
@@ -18,8 +22,13 @@ export default class Contact extends React.Component<
   constructor(props: {}) {
     super(props)
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
+    this.handleChangeMessage = this.handleChangeMessage.bind(this)
     this.state = {
       email: {
+        edited: false
+        , value: ''
+        , valid: false
+      }, message: {
         edited: false
         , value: ''
         , valid: false
@@ -46,6 +55,25 @@ export default class Contact extends React.Component<
     )
   }
 
+  handleChangeMessage(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    this.setState((prevState: interfaceState) =>
+      ({message: {...prevState.message, edited: true}})
+    )
+
+    const inputMessage = e.target.value
+    const isValidMessage = Boolean(
+      inputMessage.match(/^.+\s.+\s.*$/)
+    )
+
+    this.setState((prevState: interfaceState) =>
+      ({message: {
+        ...prevState.message
+        , value: inputMessage
+        , valid: isValidMessage
+      }})
+    )
+  }
+
   render() {
     return (
       <form>
@@ -68,6 +96,13 @@ export default class Contact extends React.Component<
             placeholder="Donnez moi une idée de l’aide dont vous avez besoin"
             rows={4}
             cols={45}
+            onChange={this.handleChangeMessage}
+            className={
+              `${this.state.message.edited ? 'message-edited' : ''} `
+              + `${this.state.message.value === '' || this.state.message.valid ?
+                'message-is-valid'
+                : 'message-not-valid'}`
+            }
           />
         </div>
 

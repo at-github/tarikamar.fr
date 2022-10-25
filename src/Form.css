@@ -17,7 +17,8 @@ button {
   cursor: pointer;
 }
 
-input.email-edited.email-not-valid {
+.email-edited.email-not-valid,
+.message-edited.message-not-valid {
   border-left: 5px solid #dd0505;
   padding-left: 10px;
 }
