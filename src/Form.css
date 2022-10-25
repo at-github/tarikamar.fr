@@ -17,6 +17,11 @@ button {
   cursor: pointer;
 }
 
+input.email-edited.email-not-valid {
+  border-left: 5px solid #dd0505;
+  padding-left: 10px;
+}
+
 /** NEXUS 7 **/
 @media (max-width: 601px) {
   input, button {
