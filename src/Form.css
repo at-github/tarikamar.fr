@@ -1,0 +1,32 @@
+.form-row {
+  margin: 5px 0;
+}
+
+input, textarea, button {
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 1.5rem;
+}
+
+textarea {
+  max-width: 80vw;
+}
+
+button {
+  cursor: pointer;
+}
+
+/** NEXUS 7 **/
+@media (max-width: 601px) {
+  input, button {
+    width: 80vw;
+  }
+}
+
+/** FAIRPHONE 3+ **/
+@media (max-width: 361px) {
+  input, textarea, button {
+    font-size: 0.8rem;
+  }
+}

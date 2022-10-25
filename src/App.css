@@ -54,25 +54,6 @@ h2 {
   color: #333;
 }
 
-input, textarea, button {
-  border: none;
-  padding: 10px 15px;
-  margin: 5px;
-  font-size: 1.5rem;
-}
-
-textarea {
-  max-width: 80vw;
-}
-
-button {
-  cursor: pointer;
-}
-
-.form-row {
-  margin: 5px 0;
-}
-
 .CTA {
   background-color: #333;
   color: #EEE;
@@ -287,10 +268,6 @@ h1#title-main span {
   h1 {
     margin: 50px 0;
   }
-  
-  input, button {
-    width: 80vw;
-  }
 
   .CTA {
     padding: 20px 15px;
@@ -376,9 +353,5 @@ h1#title-main span {
   /** ABOUT ME **/
   .about-me h1 {
     background-position: 84% 0;
-  }
-
-  input, textarea, button {
-    font-size: 0.8rem;
   }
 }
