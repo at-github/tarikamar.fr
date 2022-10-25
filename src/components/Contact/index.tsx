@@ -98,7 +98,24 @@ export default class Contact extends React.Component<
       ({form: {...prevState.form, state: EnumFormState.processing}})
     )
 
-    this.setState({form: {state: EnumFormState.sent}});
+    const body = new FormData()
+    body.append('your-email', this.state.email.value)
+    body.append('your-message', this.state.message.value)
+
+    fetch(
+      'https://api.tarikamar.fr/wp-json/contact-form-7/v1/contact-forms/49/feedback'
+      , {
+        body
+        , method: 'POST'
+        , credentials: 'include'
+        , mode: 'cors'
+      }
+    )
+      .then(res => res.json())
+      .then(json => {
+        if (json.status === 'mail_sent')
+          this.setState({form: {state: EnumFormState.sent}})
+      })
   }
 
   render() {
