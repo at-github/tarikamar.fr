@@ -1,9 +1,15 @@
 import React from 'react';
 import '../../Form.css';
 
-interface interfaceProps {}
+interface InterfaceProps {}
 
-interface interfaceState {
+enum EnumFormState {
+  none = 'none',
+  processing = 'processing',
+  sent = 'sent'
+}
+
+interface InterfaceState {
   email: {
     edited: boolean
     , value: string
@@ -12,17 +18,20 @@ interface interfaceState {
     edited: boolean
     , value: string
     , valid: boolean
+  }, form: {
+    state: EnumFormState
   }
 }
 
 export default class Contact extends React.Component<
-  interfaceProps,
-  interfaceState
+  InterfaceProps,
+  InterfaceState
 > {
   constructor(props: {}) {
     super(props)
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
     this.handleChangeMessage = this.handleChangeMessage.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
       email: {
         edited: false
@@ -32,12 +41,14 @@ export default class Contact extends React.Component<
         edited: false
         , value: ''
         , valid: false
+      }, form: {
+        state: EnumFormState.none
       }
     }
   }
 
   handleChangeEmail(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState((prevState: interfaceState) =>
+    this.setState((prevState: InterfaceState) =>
       ({email: {...prevState.email, edited: true}})
     )
 
@@ -46,7 +57,7 @@ export default class Contact extends React.Component<
       inputEmail.match(/^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,}$/i)
     )
 
-    this.setState((prevState: interfaceState) =>
+    this.setState((prevState: InterfaceState) =>
       ({email: {
         ...prevState.email
         , value: inputEmail
@@ -56,7 +67,7 @@ export default class Contact extends React.Component<
   }
 
   handleChangeMessage(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    this.setState((prevState: interfaceState) =>
+    this.setState((prevState: InterfaceState) =>
       ({message: {...prevState.message, edited: true}})
     )
 
@@ -65,7 +76,7 @@ export default class Contact extends React.Component<
       inputMessage.match(/^.+\s.+\s.*$/)
     )
 
-    this.setState((prevState: interfaceState) =>
+    this.setState((prevState: InterfaceState) =>
       ({message: {
         ...prevState.message
         , value: inputMessage
@@ -74,9 +85,16 @@ export default class Contact extends React.Component<
     )
   }
 
+  handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    this.setState((prevState: InterfaceState) =>
+      ({form: {...prevState.form, state: EnumFormState.processing}})
+    )
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <div className="form-row">
           <input
             type="email"
@@ -110,6 +128,7 @@ export default class Contact extends React.Component<
           <button
             type="submit"
             className="CTA"
+            disabled={this.state.form.state === EnumFormState.processing}
           >
             Contactez-moi
           </button>
