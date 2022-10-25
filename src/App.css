@@ -54,6 +54,11 @@ h2 {
   color: #333;
 }
 
+h3 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 3vw;
+}
+
 .CTA {
   background-color: #333;
   color: #EEE;
@@ -148,6 +153,15 @@ h1#title-main span {
   background-image: url('/public/img/hello.png');
   background-position: 80% 0;
   background-size: contain;
+}
+
+/** THANKING **/
+.thanking {
+  text-align: center;
+}
+
+.thanking h3 {
+  font-size: 6vw;
 }
 
 @media (min-width: 1024px) {

@@ -93,12 +93,23 @@ export default class Contact extends React.Component<
     ) {
       return
     }
+
     this.setState((prevState: InterfaceState) =>
       ({form: {...prevState.form, state: EnumFormState.processing}})
     )
+
+    this.setState({form: {state: EnumFormState.sent}});
   }
 
   render() {
+    if (this.state.form.state === EnumFormState.sent)
+      return (
+        <div className="thanking">
+          <p><img src="/img/confetti-outline.apng" /></p>
+          <h3>À bientôt</h3>
+        </div>
+      )
+
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-row">
