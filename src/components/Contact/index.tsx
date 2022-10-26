@@ -1,5 +1,6 @@
-import React from 'react';
-import '../../Form.css';
+import React from 'react'
+import AlarmIcon from '../AlarmIcon'
+import '../../Form.css'
 
 interface InterfaceProps {}
 
@@ -60,6 +61,7 @@ export default class Contact extends React.Component<
     this.setState((prevState: InterfaceState) =>
       ({email: {
         ...prevState.email
+        , edited: inputEmail !== ''
         , value: inputEmail
         , valid: isValidEmail
       }})
@@ -79,6 +81,7 @@ export default class Contact extends React.Component<
     this.setState((prevState: InterfaceState) =>
       ({message: {
         ...prevState.message
+        , edited: inputMessage !== ''
         , value: inputMessage
         , valid: isValidMessage
       }})
@@ -91,6 +94,17 @@ export default class Contact extends React.Component<
       this.state.email.valid === false
       || this.state.message.valid === false
     ) {
+
+      if (this.state.email.value === '')
+        this.setState((prevState: InterfaceState) =>
+          ({email: {...prevState.email, edited: true}})
+        )
+
+      if (this.state.message.value === '')
+        this.setState((prevState: InterfaceState) =>
+          ({message: {...prevState.message, edited: true}})
+        )
+
       return
     }
 
@@ -130,13 +144,21 @@ export default class Contact extends React.Component<
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-row">
+          <label
+            className={`error${
+              this.state.email.edited && this.state.email.valid === false ?
+                ' visible' : ''
+            }`}
+          >
+            <AlarmIcon />
+          </label>
           <input
             type="email"
             placeholder="Votre email"
             onChange={this.handleChangeEmail}
             className={
               `${this.state.email.edited ? 'email-edited' : ''}`
-              + ` ${this.state.email.value === '' || this.state.email.valid ?
+              + ` ${this.state.email.valid ?
                 'email-is-valid'
                 : 'email-not-valid'}`
             }
@@ -144,6 +166,14 @@ export default class Contact extends React.Component<
         </div>
 
         <div className="form-row">
+          <label
+            className={`error${
+              this.state.message.edited && this.state.message.valid === false ?
+                ' visible' : ''
+            }`}
+          >
+            <AlarmIcon />
+          </label>
           <textarea
             placeholder="Donnez moi une idée de l’aide dont vous avez besoin"
             rows={4}
@@ -151,7 +181,7 @@ export default class Contact extends React.Component<
             onChange={this.handleChangeMessage}
             className={
               `${this.state.message.edited ? 'message-edited' : ''} `
-              + `${this.state.message.value === '' || this.state.message.valid ?
+              + `${this.state.message.valid ?
                 'message-is-valid'
                 : 'message-not-valid'}`
             }
