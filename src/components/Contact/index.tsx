@@ -1,4 +1,5 @@
 import React from 'react'
+import myFetch from '../../services/myFetch'
 import AlarmIcon from '../AlarmIcon'
 import '../../Form.css'
 
@@ -33,6 +34,7 @@ export default class Contact extends React.Component<
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
     this.handleChangeMessage = this.handleChangeMessage.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.setFormSent = this.setFormSent.bind(this)
     this.state = {
       email: {
         edited: false
@@ -88,6 +90,11 @@ export default class Contact extends React.Component<
     )
   }
 
+  setFormSent(json: any) {
+    if (json.status === 'mail_sent')
+      this.setState({form: {state: EnumFormState.sent}})
+  }
+
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (
@@ -115,20 +122,14 @@ export default class Contact extends React.Component<
     body.append('your-email', this.state.email.value)
     body.append('your-message', this.state.message.value)
 
-    fetch(
-      'https://api.tarikamar.fr/wp-json/contact-form-7/v1/contact-forms/49/feedback'
+    myFetch(
+      '/contact-form-7/v1/contact-forms/49/feedback'
       , {
         body
         , method: 'POST'
-        , credentials: 'include'
-        , mode: 'cors'
+        , callback: this.setFormSent
       }
     )
-      .then(res => res.json())
-      .then(json => {
-        if (json.status === 'mail_sent')
-          this.setState({form: {state: EnumFormState.sent}})
-      })
   }
 
   render() {

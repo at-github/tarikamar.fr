@@ -1,29 +1,18 @@
-import {QueryClient, QueryClientProvider, useQuery} from 'react-query';
-import {ReactQueryDevtools} from 'react-query/devtools';
-import Loading from './components/Loading';
-import Contact from './components/Contact';
+import {QueryClient, QueryClientProvider, useQuery} from 'react-query'
+import {ReactQueryDevtools} from 'react-query/devtools'
+import myFetch from './services/myFetch'
+import Loading from './components/Loading'
+import Contact from './components/Contact'
 
 import './App.css';
-
-interface ResponseInterface {
-  content: {
-    rendered: string
-  }
-}
 
 const queryClient = new QueryClient()
 
 function Content() {
   const {isLoading, error, data} = useQuery('servicesData', () =>
-    fetch(
-      'https://api.tarikamar.fr/wp-json/wp/v2/pages/5'
-      , {
-        credentials: 'include'
-        , mode: 'cors'
-      }
-    ).then(res => res.json())
+    myFetch('/wp/v2/pages/5')
   )
-  const page: ResponseInterface = data || '';
+  const page = data || {content: {rendered: ''}}
 
   if (isLoading) return <Loading />;
 
