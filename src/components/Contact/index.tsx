@@ -122,7 +122,7 @@ export default class Contact extends React.Component<
     if (this.state.form.state === EnumFormState.sent)
       return (
         <div className="thanking">
-          <p><img src="/img/confetti-outline.apng" /></p>
+          <p><img src="/img/confetti-outline.apng" alt="Message envoyé !" /></p>
           <h3>À bientôt</h3>
         </div>
       )
