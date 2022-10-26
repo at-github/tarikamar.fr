@@ -6,7 +6,7 @@ const myFetch = (
       , callback?: Function
     }
 ) => {
-  const domain = 'https://api.tarikamar.fr/wp-json'
+  const domain = process.env.REACT_APP_API_DOMAIN
 
   return fetch(
     `${domain}${route}`
