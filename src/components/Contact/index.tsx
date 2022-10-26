@@ -94,7 +94,6 @@ export default class Contact extends React.Component<
       this.state.email.valid === false
       || this.state.message.valid === false
     ) {
-
       if (this.state.email.value === '')
         this.setState((prevState: InterfaceState) =>
           ({email: {...prevState.email, edited: true}})
@@ -150,7 +149,7 @@ export default class Contact extends React.Component<
                 ' visible' : ''
             }`}
           >
-            <AlarmIcon />
+            <AlarmIcon />Désolé mais un email valide est requis
           </label>
           <input
             type="email"
@@ -173,6 +172,7 @@ export default class Contact extends React.Component<
             }`}
           >
             <AlarmIcon />
+            Quelques mots pour décrire notre prise de contact peut-être ?
           </label>
           <textarea
             placeholder="Donnez moi une idée de l’aide dont vous avez besoin"
