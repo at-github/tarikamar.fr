@@ -9,6 +9,11 @@ input, textarea, button, label {
   font-size: 1.5rem;
 }
 
+.form-row input,
+.form-row textarea {
+  margin-top: 41px;
+}
+
 textarea {
   max-width: 80vw;
 }
@@ -25,7 +30,7 @@ label.error {
   color: #5c3d3d;
   display: none;
   border-left: 5px solid #dd0505;
-  margin-bottom: -5px;
+  margin-bottom: -41px;
   font-weight: 500;
   font-size: 1rem;
 }
