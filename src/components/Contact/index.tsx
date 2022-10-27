@@ -32,7 +32,9 @@ export default class Contact extends React.Component<
   constructor(props: {}) {
     super(props)
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
+    this.handleBlurEmail = this.handleBlurEmail.bind(this)
     this.handleChangeMessage = this.handleChangeMessage.bind(this)
+    this.handleBlurMessage = this.handleBlurMessage.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.setFormSent = this.setFormSent.bind(this)
     this.state = {
@@ -50,11 +52,10 @@ export default class Contact extends React.Component<
     }
   }
 
+  /* Duplicate code, can’t make common code
+   * because using dynamic key with typescript is not beautifull
+   */
   handleChangeEmail(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState((prevState: InterfaceState) =>
-      ({email: {...prevState.email, edited: true}})
-    )
-
     const inputEmail = e.target.value
     const isValidEmail = Boolean(
       inputEmail.match(/^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,}$/i)
@@ -63,18 +64,24 @@ export default class Contact extends React.Component<
     this.setState((prevState: InterfaceState) =>
       ({email: {
         ...prevState.email
-        , edited: inputEmail !== ''
         , value: inputEmail
         , valid: isValidEmail
       }})
     )
   }
 
-  handleChangeMessage(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    this.setState((prevState: InterfaceState) =>
-      ({message: {...prevState.message, edited: true}})
-    )
+  handleBlurEmail(e: React.ChangeEvent<HTMLInputElement>) {
+    const inputEmail = e.target.value
 
+    this.setState((prevState: InterfaceState) =>
+      ({email: {
+        ...prevState.email
+        , edited: inputEmail !== ''
+      }})
+    )
+  }
+
+  handleChangeMessage(e: React.ChangeEvent<HTMLTextAreaElement>) {
     const inputMessage = e.target.value
     const isValidMessage = Boolean(
       inputMessage.match(/^.+\s.+\s.*$/)
@@ -83,9 +90,19 @@ export default class Contact extends React.Component<
     this.setState((prevState: InterfaceState) =>
       ({message: {
         ...prevState.message
-        , edited: inputMessage !== ''
         , value: inputMessage
         , valid: isValidMessage
+      }})
+    )
+  }
+
+  handleBlurMessage(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    const inputMessage = e.target.value
+
+    this.setState((prevState: InterfaceState) =>
+      ({message: {
+        ...prevState.message
+        , edited: inputMessage !== ''
       }})
     )
   }
@@ -156,6 +173,7 @@ export default class Contact extends React.Component<
             type="email"
             placeholder="Votre email"
             onChange={this.handleChangeEmail}
+            onBlur={this.handleBlurEmail}
             className={
               `${this.state.email.edited ? 'email-edited' : ''}`
               + ` ${this.state.email.valid ?
@@ -180,6 +198,7 @@ export default class Contact extends React.Component<
             rows={4}
             cols={45}
             onChange={this.handleChangeMessage}
+            onBlur={this.handleBlurMessage}
             className={
               `${this.state.message.edited ? 'message-edited' : ''} `
               + `${this.state.message.valid ?
