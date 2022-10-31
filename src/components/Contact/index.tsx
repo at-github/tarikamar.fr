@@ -58,7 +58,9 @@ export default class Contact extends React.Component<
   handleChangeEmail(e: React.ChangeEvent<HTMLInputElement>) {
     const inputEmail = e.target.value
     const isValidEmail = Boolean(
-      inputEmail.match(/^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,}$/i)
+      inputEmail.match(
+        /^[a-z0-9.+!#$%&'*-/=?^_`{}|]+@[a-z0-9.-]{2,63}\.[a-z]{2,}$/i
+      )
     )
 
     this.setState((prevState: InterfaceState) =>
