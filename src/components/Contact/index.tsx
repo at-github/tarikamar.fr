@@ -148,7 +148,26 @@ export default class Contact extends React.Component<
         , method: 'POST'
         , callback: this.setFormSent
       }
-    )
+    ).then(response => {
+      if (response.invalid_fields && response.invalid_fields.length > 0) {
+
+        response.invalid_fields.forEach((field: any) => {
+          if (field.field === 'your-email')
+            this.setState((prevState: InterfaceState) =>
+              ({email: {...prevState.email, valid: false}})
+            )
+
+          if (field.field === 'your-message')
+            this.setState((prevState: InterfaceState) =>
+              ({message: {...prevState.message, valid: false}})
+            )
+        })
+
+        this.setState((prevState: InterfaceState) =>
+          ({form: {...prevState.form, state: EnumFormState.none}})
+        )
+      }
+    })
   }
 
   render() {
