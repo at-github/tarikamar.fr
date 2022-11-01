@@ -1,6 +1,7 @@
 import React from 'react'
 import myFetch from '../../services/myFetch'
 import AlarmIcon from '../AlarmIcon'
+import CTA from '../CTA'
 import '../../Form.css'
 
 interface InterfaceProps {}
@@ -230,13 +231,11 @@ export default class Contact extends React.Component<
         </div>
 
         <div className="form-row">
-          <button
-            type="submit"
-            className="CTA"
+          <CTA
             disabled={this.state.form.state === EnumFormState.processing}
-          >
-            Contactez-moi
-          </button>
+            loading={this.state.form.state === EnumFormState.processing}
+            text="Contactez-moi"
+          />
         </div>
       </form>
     )

@@ -59,35 +59,6 @@ h3 {
   font-size: 3vw;
 }
 
-.CTA {
-  background-color: #333;
-  color: #EEE;
-  padding: 20px 40px;
-  box-shadow: rgb(0 0 0 / 25%) 10px 10px 10px 0px;
-  transition: box-shadow 100ms ease-out;
-  box-sizing: content-box;
-}
-
-.CTA:hover {
-  box-shadow: rgb(0 0 0 / 25%) 2px 2px 3px 0px;
-  background-color: #404040;
-  color: #FFF;
-}
-
-.CTA:active {
-  background-color: #4d4d4d;
-  margin: 6px 5px 5px 6px;
-  padding: 18px 38px;
-  color: #DDD;
-}
-
-.CTA:disabled {
-  background-color: #EEE;
-  color: #999;
-  box-shadow: rgb(0 0 0 / 25%) 2px 2px 3px 0px;
-  cursor: default;
-}
-
 .underline {
   text-decoration: underline;
 }
@@ -297,10 +268,6 @@ h1#title-main span {
 
   h1 {
     margin: 50px 0;
-  }
-
-  .CTA {
-    padding: 20px 15px;
   }
 
   /** WORDPRESS COLUMNS **/
