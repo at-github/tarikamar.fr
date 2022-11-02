@@ -5,7 +5,7 @@ import './Menu.css';
 
 export default function Menu() {
   return (
-    <nav className="menu">
+    <nav id="menu">
       <ul>
         <li><NavLink to={'/'}>Services</NavLink></li>
         <li><NavLink to={'/blog'}>Blog</NavLink></li>
