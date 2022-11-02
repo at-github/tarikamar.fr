@@ -7,6 +7,7 @@ import {
   useRouteError
 } from 'react-router-dom';
 import Services from './features/services';
+import Menu from './components/Menu';
 import reportWebVitals from './reportWebVitals';
 
 const rootElement = document.getElementById('root');

@@ -75,6 +75,10 @@ h3 {
   scroll-snap-align: start;
 }
 
+.menu {
+  scroll-snap-align: start;
+}
+
 .big-row > * {
   width: 100%;
 }

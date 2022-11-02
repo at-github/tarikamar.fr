@@ -2,6 +2,7 @@ import {QueryClient, QueryClientProvider, useQuery} from 'react-query'
 import {ReactQueryDevtools} from 'react-query/devtools'
 import myFetch from '../../services/myFetch'
 import Loading from '../../components/Loading'
+import Menu from '../../components/Menu'
 import Contact from '../../components/Contact'
 
 import './Services.css';
@@ -21,6 +22,7 @@ function Content() {
   return (
     <>
       <div className="Services">
+        <Menu />
         <div
           className="editorial"
           dangerouslySetInnerHTML={{__html: page.content.rendered}}
