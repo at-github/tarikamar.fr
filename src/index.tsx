@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import {
-  createBrowserRouter,
-  RouterProvider,
-  useRouteError
+  Routes,
+  Route,
+  BrowserRouter
 } from 'react-router-dom';
+import Layout from './Layout';
 import Services from './features/services';
-import Menu from './components/Menu';
 import reportWebVitals from './reportWebVitals';
 
 const rootElement = document.getElementById('root');
@@ -24,20 +24,21 @@ function ErrorPage() {
   )
 }
 
-const router = createBrowserRouter([
-  {
-    path: '/'
-    , element: <Services />
-    , errorElement: <ErrorPage />
-  }, {
-    path: '/services'
-    , element: <Services />
-  }
-]);
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Services />} />
+      </Route>
+    </Routes>
+  )
+}
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
