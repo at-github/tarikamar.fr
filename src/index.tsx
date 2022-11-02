@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Layout from './components/Layout';
 import Services from './features/services';
+import Blog from './features/blog';
 import reportWebVitals from './reportWebVitals';
 
 const rootElement = document.getElementById('root');
@@ -30,6 +31,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Services />} />
         <Route path="services" element={<Services />} />
+        <Route path="blog" element={<Blog />} />
       </Route>
     </Routes>
   )
