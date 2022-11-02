@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 import './Menu.css';
 
@@ -6,8 +6,8 @@ export default function Menu() {
   return (
     <nav className="menu">
       <ul>
-        <li><Link to={'/'}>Services</Link></li>
-        <li><Link to={'/blog'}>Blog</Link></li>
+        <li><NavLink to={'/'}>Services</NavLink></li>
+        <li><NavLink to={'/blog'}>Blog</NavLink></li>
       </ul>
     </nav>
   )
