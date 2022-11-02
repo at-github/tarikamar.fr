@@ -6,7 +6,7 @@ import {
   RouterProvider,
   useRouteError
 } from 'react-router-dom';
-import App from './App';
+import Services from './features/services';
 import reportWebVitals from './reportWebVitals';
 
 const rootElement = document.getElementById('root');
@@ -26,11 +26,11 @@ function ErrorPage() {
 const router = createBrowserRouter([
   {
     path: '/'
-    , element: <App />
+    , element: <Services />
     , errorElement: <ErrorPage />
   }, {
     path: '/services'
-    , element: <App />
+    , element: <Services />
   }
 ]);
 

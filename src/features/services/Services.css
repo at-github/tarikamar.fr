@@ -12,7 +12,7 @@ html {
   scroll-snap-type: y mandatory;
 }
 
-html, body, .App {
+html, body {
   height: 100%;
 }
 

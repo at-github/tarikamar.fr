@@ -1,10 +1,10 @@
 import {QueryClient, QueryClientProvider, useQuery} from 'react-query'
 import {ReactQueryDevtools} from 'react-query/devtools'
-import myFetch from './services/myFetch'
-import Loading from './components/Loading'
-import Contact from './components/Contact'
+import myFetch from '../../services/myFetch'
+import Loading from '../../components/Loading'
+import Contact from '../../components/Contact'
 
-import './App.css';
+import './Services.css';
 
 const queryClient = new QueryClient()
 
@@ -20,7 +20,7 @@ function Content() {
 
   return (
     <>
-      <div className="App">
+      <div className="Services">
         <div
           className="editorial"
           dangerouslySetInnerHTML={{__html: page.content.rendered}}
@@ -36,7 +36,7 @@ function Content() {
   );
 }
 
-function App() {
+function Services() {
   return (
     <QueryClientProvider client={queryClient}>
       <Content />
@@ -45,4 +45,4 @@ function App() {
   )
 }
 
-export default App;
+export default Services;
