@@ -1,0 +1,15 @@
+.menu ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.menu a {
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.menu a:hover {
+  background-color: #333;
+  color: #EEE;
+}
