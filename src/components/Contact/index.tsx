@@ -181,7 +181,7 @@ export default class Contact extends React.Component<
       )
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} id="contact">
         <div className="form-row">
           <label
             className={`error${
