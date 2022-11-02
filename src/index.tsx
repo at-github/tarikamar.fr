@@ -9,21 +9,12 @@ import {
 import Layout from './components/Layout';
 import Services from './features/services';
 import Blog from './features/blog';
+import NotFound from './features/notfound';
 import reportWebVitals from './reportWebVitals';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Failed to find the root element');
 const root = ReactDOM.createRoot(rootElement);
-
-function ErrorPage() {
-  const error = useRouteError()
-  // eslint-disable-next-line no-console
-  console.error(error)
-
-  return (
-    <>Ooops</>
-  )
-}
 
 function App() {
   return (
@@ -32,6 +23,7 @@ function App() {
         <Route index element={<Services />} />
         <Route path="services" element={<Services />} />
         <Route path="blog" element={<Blog />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )
