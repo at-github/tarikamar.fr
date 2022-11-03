@@ -23,13 +23,15 @@ function ArrowUp() {
   )
 }
 
-export default function Footer() {
+export default function Footer(props: {
+  scrollTopVisible: Boolean
+}) {
   return (
     <div id="footer">
       <HashLink
         to={'/#menu'}
         id="scroll-top"
-        className="button"
+        className={`button ${props.scrollTopVisible ? 'visible' : 'hide'}`}
       >
         <ArrowUp />
       </HashLink>
