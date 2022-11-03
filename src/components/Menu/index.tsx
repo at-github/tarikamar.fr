@@ -10,7 +10,10 @@ export default function Menu() {
         <li><NavLink to={'/'}>Services</NavLink></li>
         <li><NavLink to={'/blog'}>Blog</NavLink></li>
         <li>
-          <NavHashLink to={'/services/#contact'}>
+          <NavHashLink
+            to={'/services/#contact'}
+            className="CTA"
+          >
             Concatez-moi
           </NavHashLink>
         </li>

@@ -21,7 +21,7 @@ body {
   font-size: 22px;
   display: flex;
   justify-content: center;
-  padding: 60px 20px;
+  padding: 0px 20px 60px;
   max-width: 1024px;
   margin: 0 auto;
 }
@@ -76,4 +76,8 @@ h3 {
 
 .big-row > * {
   width: 100%;
+}
+
+a {
+  color: inherit;
 }

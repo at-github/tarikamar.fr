@@ -1,11 +1,20 @@
 #menu {
   scroll-snap-align: start;
+  margin: 60px 0;
 }
 
 #menu ul {
   display: flex;
   justify-content: space-around;
+  align-items: flex-end;
+  padding: 0;
   list-style: none;
+  min-height: 50px;
+}
+
+#menu li {
+  flex: 1;
+  text-align: center;
 }
 
 #menu a {
@@ -14,8 +23,7 @@
 }
 
 #menu a:hover, #menu a.active {
-  background-color: #333;
-  color: #EEE;
+  border-bottom: 5px solid #333;
 }
 
 a:visited {
