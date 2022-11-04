@@ -62,3 +62,66 @@ h1#title-main span {
 .thanking h3 {
   font-size: 6vw;
 }
+
+/** IPAD AIR portrait **/
+@media (max-width: 768px) {
+  /** SOLUTIONS **/
+  .solutions .wp-block-columns {
+    display: block;
+  }
+
+  .solutions .wp-block-columns .wp-block-column {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .solutions h2 {
+    margin: 0;
+  }
+
+  .solutions .solution {
+    background-position: 20% 100%;
+  }
+
+  /** ABOUT ME **/
+  .about-me h1 {
+    background-position: 570px 0;
+  }
+}
+
+/** NEXUS 7 **/
+@media (max-width: 601px) {
+  /** ABOUT ME **/
+  .about-me h1 {
+    background-position: 445px 15px;
+    background-size: 15%;
+  }
+}
+
+@media (max-width: 376px) {
+  /** ABOUT ME **/
+  .about-me h1 {
+    background-position: 90% 0;
+  }
+}
+
+/** FAIRPHONE 3+ **/
+@media (max-width: 361px) {
+  /** SOLUTIONS **/
+  .solution-design {
+    background-position: 0 70%;
+  }
+
+  .solution-site {
+    background-position: 0 85%;
+  }
+
+  .solution-tools {
+    background-position: 0 80%;
+  }
+
+  /** ABOUT ME **/
+  .about-me h1 {
+    background-position: 84% 0;
+  }
+}

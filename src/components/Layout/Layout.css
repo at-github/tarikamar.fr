@@ -168,20 +168,6 @@ button:disabled,
     column-gap: 20px;
     padding: 0 10px;
   }
-
-  /** SOLUTIONS **/
-  .solution-design {
-    background-position: 1px 72px;
-  }
-
-  .solution-site {
-    background-position: 2px 91px;
-  }
-
-  .solution-tools {
-    background-position: 161px 100px;
-  }
-
 }
 
 /** IPAD AIR portrait **/
@@ -194,32 +180,9 @@ button:disabled,
     padding: 0 0 0 10px;
   }
 
-  .solutions .wp-block-columns {
-    display: block;
-  }
-
-  .solutions .wp-block-columns .wp-block-column {
-    display: flex;
-    margin-top: 30px;
-  }
-
   .wp-block-column > * {
     flex: 1;
   }
-
-  .solutions h2 {
-    margin: 0;
-  }
-
-  .solutions .solution {
-    background-position: 20% 100%;
-  }
-
-  /** ABOUT ME **/
-  .about-me h1 {
-    background-position: 570px 0;
-  }
-
 }
 
 /** NEXUS 7 **/
@@ -234,21 +197,11 @@ button:disabled,
 
   /** WORDPRESS COLUMNS **/
   .wp-block-columns {
-    display: block;
-  }
-
-  .wp-block-columns.question-answer .wp-block-column {
-    margin-top: 60px;
+    flex-direction: column;
   }
 
   .wp-block-columns.question-answer .wp-block-column:last-child {
     text-align: right;
-  }
-
-  /** ABOUT ME **/
-  .about-me h1 {
-    background-position: 445px 15px;
-    background-size: 15%;
   }
 }
 
@@ -264,11 +217,6 @@ button:disabled,
   h2 {
     font-size: 7.7vw;
     margin: 20px 0 10px;
-  }
-
-  /** ABOUT ME **/
-  .about-me h1 {
-    background-position: 90% 0;
   }
 }
 
