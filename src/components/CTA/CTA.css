@@ -5,7 +5,6 @@
   box-shadow: rgb(0 0 0 / 25%) 10px 10px 10px 0px;
   transition: box-shadow 100ms ease-out;
   box-sizing: content-box;
-  position: relative;
 }
 
 #menu .CTA {

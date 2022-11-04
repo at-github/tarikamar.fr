@@ -26,25 +26,65 @@
   border-bottom: 5px solid #333;
 }
 
-a:visited {
-  color: inherit;
+#menu .close,
+#menu .open {
+  display: none;
 }
 
 /** IPAD AIR portrait **/
 @media (max-width: 768px) {
   #menu {
-    height: 100%;
     margin: 0;
   }
 
   #menu ul {
-    height: 100%;
     align-items: center;
     flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
   }
 
   #menu ul li {
     display: flex;
     align-items: center;
+  }
+
+  #menu .close {
+    display: block;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    padding: 0;
+    border-radius: 13px;
+  }
+
+  #menu .open {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  #menu ul.is-closed,
+  #menu .close.is-closed {
+    display: none;
+  }
+}
+
+/** NEXUS 7 **/
+@media (max-width: 601px) {
+  #menu button.open {
+    width: inherit;
   }
 }
