@@ -105,3 +105,212 @@ button:disabled,
   color: #DDD;
   cursor: default;
 }
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 6rem;
+  }
+
+  /** MAIN TITLE **/
+  #soon {
+    font-size: 14rem;
+    line-height: 12rem;
+  }
+
+  #my-services {
+    font-size: 4.3rem;
+    line-height: 4rem;
+  }
+
+  #your-disposal {
+    font-size: 5.6rem;
+    line-height: 6rem;;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+}
+
+/** IPAD PRO portrait **/
+@media (max-width: 1024px) {
+  .about-me h1 {
+    background-position: 82% 0;
+  }
+
+  h1 {
+    font-size: 9vw;
+  }
+
+  /** MAIN TITLE **/
+  #soon {
+    font-size: 20vw;
+    line-height: 17vw;;
+  }
+
+  #my-services {
+    font-size: 6.1vw;
+    line-height: 6vw;;
+  }
+
+  #your-disposal {
+    font-size: 8vw;
+    line-height: 8vw;;
+  }
+
+  h2 {
+    font-size: 5vw;
+  }
+}
+
+@media (max-width: 834px) {
+  .wp-block-columns {
+    column-gap: 20px;
+    padding: 0 10px;
+  }
+
+  /** SOLUTIONS **/
+  .solution-design {
+    background-position: 1px 72px;
+  }
+
+  .solution-site {
+    background-position: 2px 91px;
+  }
+
+  .solution-tools {
+    background-position: 161px 100px;
+  }
+
+}
+
+/** IPAD AIR portrait **/
+@media (max-width: 768px) {
+  body {
+    font-size: 20px;
+  }
+
+  ul {
+    padding: 0 0 0 10px;
+  }
+
+  .solutions .wp-block-columns {
+    display: block;
+  }
+
+  .solutions .wp-block-columns .wp-block-column {
+    display: flex;
+    margin-top: 30px;
+  }
+
+  .wp-block-column > * {
+    flex: 1;
+  }
+
+  .solutions h2 {
+    margin: 0;
+  }
+
+  .solutions .solution {
+    background-position: 20% 100%;
+  }
+
+  /** ABOUT ME **/
+  .about-me h1 {
+    background-position: 570px 0;
+  }
+
+}
+
+/** NEXUS 7 **/
+@media (max-width: 601px) {
+  body {
+    font-size: 20px;
+  }
+
+  h1 {
+    margin: 50px 0;
+  }
+
+  /** WORDPRESS COLUMNS **/
+  .wp-block-columns {
+    display: block;
+  }
+
+  .wp-block-columns.question-answer .wp-block-column {
+    margin-top: 60px;
+  }
+
+  .wp-block-columns.question-answer .wp-block-column:last-child {
+    text-align: right;
+  }
+
+  /** ABOUT ME **/
+  .about-me h1 {
+    background-position: 445px 15px;
+    background-size: 15%;
+  }
+}
+
+@media (max-width: 376px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    margin: 50px 0;
+  }
+
+  h2 {
+    font-size: 7.7vw;
+    margin: 20px 0 10px;
+  }
+
+  /** ABOUT ME **/
+  .about-me h1 {
+    background-position: 90% 0;
+  }
+}
+
+/** FAIRPHONE 3+ **/
+@media (max-width: 361px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    margin: 25px 0;
+  }
+
+  h2 {
+    margin: 20px 0 10px;
+  }
+
+  p {
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  /** WORDPRESS COLUMNS **/
+  .wp-block-columns {
+    padding: 0;
+  }
+
+  /** SOLUTIONS **/
+  .solution-design {
+    background-position: 0 70%;
+  }
+
+  .solution-site {
+    background-position: 0 85%;
+  }
+
+  .solution-tools {
+    background-position: 0 80%;
+  }
+
+  /** ABOUT ME **/
+  .about-me h1 {
+    background-position: 84% 0;
+  }
+}

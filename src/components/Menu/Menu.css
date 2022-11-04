@@ -29,3 +29,22 @@
 a:visited {
   color: inherit;
 }
+
+/** IPAD AIR portrait **/
+@media (max-width: 768px) {
+  #menu {
+    height: 100%;
+    margin: 0;
+  }
+
+  #menu ul {
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #menu ul li {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -46,6 +46,6 @@
 /** NEXUS 7 **/
 @media (max-width: 601px) {
   .CTA {
-    padding: 20px 15px;
+    padding: 20px 15px!important;
   }
 }
