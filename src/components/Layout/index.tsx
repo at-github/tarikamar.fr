@@ -9,7 +9,9 @@ import './Layout.css';
 export default function Layout() {
   const ref = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(ref, {})
-  const menuVisible = !!entry?.isIntersecting
+  let menuVisible = true
+  if (typeof entry?.isIntersecting !== 'undefined')
+    menuVisible = entry.isIntersecting
 
   return (
     <>
