@@ -82,13 +82,9 @@ a {
   color: inherit;
 }
 
-a:visited {
-  color: inherit;
-}
-
 button, .button {
   background-color: #333;
-  color: #EEE!important;
+  color: #EEE;
   padding: 20px 40px;
 }
 
