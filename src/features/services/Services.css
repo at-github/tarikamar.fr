@@ -25,7 +25,6 @@ h1#title-main span {
 }
 
 /** SOLUTIONS **/
-
 .solutions .solution {
   background-repeat: no-repeat;
   background-position: 50% 0;
@@ -54,6 +53,11 @@ h1#title-main span {
   background-size: contain;
 }
 
+/** CODE OR DEV **/
+.no-code-dev h2 {
+  margin-top: 30px;
+}
+
 /** THANKING **/
 .thanking {
   text-align: center;
@@ -66,6 +70,14 @@ h1#title-main span {
 /** IPAD AIR portrait **/
 @media (max-width: 768px) {
   /** SOLUTIONS **/
+  .solutions h2 {
+    margin: 0;
+  }
+
+  .solutions li {
+    padding: 2px 0;
+  }
+
   .solutions .wp-block-columns {
     display: block;
   }
@@ -73,10 +85,6 @@ h1#title-main span {
   .solutions .wp-block-columns .wp-block-column {
     display: flex;
     margin-top: 20px;
-  }
-
-  .solutions h2 {
-    margin: 0;
   }
 
   .solutions .solution {
@@ -99,6 +107,11 @@ h1#title-main span {
 }
 
 @media (max-width: 376px) {
+  /** SOLUTIONS **/
+  .solutions .solution {
+    background-position: 15% 40px;
+  }
+
   /** ABOUT ME **/
   .about-me h1 {
     background-position: 90% 0;
