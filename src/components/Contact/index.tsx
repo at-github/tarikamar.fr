@@ -1,7 +1,9 @@
 import React from 'react'
 import myFetch from '../../services/myFetch'
-import AlarmIcon from '../AlarmIcon'
 import CTA from '../CTA'
+
+import AlarmIcon from '../Icons/AlarmIcon'
+
 import '../../Form.css'
 
 interface InterfaceProps {}

@@ -1,7 +1,7 @@
 #scroll-top {
   position: fixed;
   z-index: 1;
-  left: 3px;
+  right: 3px;
   bottom: -70px;
   transition: bottom 500ms ease-out;
   display: block;
@@ -24,4 +24,10 @@
 
 #scroll-top.visible {
   bottom: 2px;
+}
+
+@media (max-width: 768px) {
+  #scroll-top {
+    left: 3px;
+  }
 }

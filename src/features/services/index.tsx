@@ -1,8 +1,9 @@
 import {QueryClient, QueryClientProvider, useQuery} from 'react-query'
 import {ReactQueryDevtools} from 'react-query/devtools'
 import myFetch from '../../services/myFetch'
-import Loading from '../../components/Loading'
 import Contact from '../../components/Contact'
+
+import LoadingIcon from '../../components/Icons/LoadingIcon'
 
 import './Services.css';
 
@@ -14,7 +15,7 @@ function Content() {
   )
   const page = data || {content: {rendered: ''}}
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <LoadingIcon />;
 
   if (error) return <>'Une erreur est survenue'</>
 

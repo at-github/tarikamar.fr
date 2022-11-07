@@ -1,6 +1,9 @@
-import {useState, forwardRef} from 'react';
-import {NavLink} from 'react-router-dom';
-import {NavHashLink} from 'react-router-hash-link';
+import {useState, forwardRef} from 'react'
+import {NavLink} from 'react-router-dom'
+import {NavHashLink} from 'react-router-hash-link'
+
+import MenuIcon from '../Icons/MenuIcon'
+import CloseIcon from '../Icons/CloseIcon'
 
 import './Menu.css';
 
@@ -25,13 +28,13 @@ const Menu = forwardRef<HTMLDivElement>(
         <button
           className={`close${!open ? ' is-closed' : ''}`}
           onClick={handleClose}
-        >x</button>
+        ><CloseIcon /></button>
 
         <button
           className={`open${open ? ' is-closed': ''}`}
           onClick={handleOpen}
         >
-        |||
+          <MenuIcon />
         </button>
 
         <ul

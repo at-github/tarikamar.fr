@@ -1,4 +1,4 @@
-import Loading from '../Loading';
+import LoadingIcon from '../Icons/LoadingIcon';
 
 import './CTA.css';
 
@@ -15,7 +15,7 @@ const CTA = function(props: {
       disabled={props.disabled}
     >
       {props.loading ?
-        <>Patientez svp <Loading /></>
+        <>Patientez svp <LoadingIcon /></>
         : props.text
       }
     </button>
