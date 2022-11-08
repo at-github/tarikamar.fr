@@ -1,3 +1,10 @@
+/** GENERAL **/
+.services ul, .services ol {
+  margin: 0;
+  padding: 0 0 0 30px;
+  line-height: 20px;
+}
+
 /** MAIN TITLE **/
 
 h1#title-main span {
@@ -70,6 +77,10 @@ h1#title-main span {
 
 /** IPAD AIR portrait **/
 @media (max-width: 768px) {
+  .services ul, .services ol {
+    padding: 0 0 0 10px;
+  }
+
   /** SOLUTIONS **/
   .solutions h2 {
     margin: 0;

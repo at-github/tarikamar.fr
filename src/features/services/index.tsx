@@ -14,7 +14,7 @@ function Wrapper(props: {
 }) {
 
   return (
-    <div className="content">
+    <div className="content services">
       <div
         className="editorial"
         dangerouslySetInnerHTML={{

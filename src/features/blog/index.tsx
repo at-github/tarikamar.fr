@@ -30,10 +30,12 @@ function Wrapper(props: {
                 className="editorial"
                 dangerouslySetInnerHTML={{__html: post.excerpt_read_more}}
               />
-              <button
-                className="CTA read-more"
-                title="Lire la suite de l'article"
-              >…</button>
+              <footer>
+                <button
+                  className="CTA read-more"
+                  title="Lire la suite de l'article"
+                >…</button>
+              </footer>
             </article>
           )
         })}

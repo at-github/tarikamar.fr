@@ -1,4 +1,8 @@
 .blog p, .blog ul, .blog ol {
+  scroll-snap-align: start;
+}
+
+.blog footer::after {
   scroll-snap-align: end;
 }
 
@@ -9,7 +13,6 @@
   border-radius: 30px;
   padding: 10px 30px!important;
   box-sizing: border-box;
-  scroll-snap-align: end;
   display: block;
   float: right;
   margin: 30px 0;
@@ -19,5 +22,6 @@
 @media (max-width: 601px) {
   .CTA.read-more {
     margin: 20px auto;
+    float: none;
   }
 }

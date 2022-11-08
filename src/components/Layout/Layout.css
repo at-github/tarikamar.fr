@@ -32,16 +32,21 @@ body > * {
 
 p {
   padding: 5px 10px;
+  line-height: 2rem;
 }
 
 ul, ol {
   margin: 0;
   padding: 0 0 0 30px;
-  line-height: 40px;
+  line-height: 2rem;
 }
 
 ul {
   list-style-type: circle;
+}
+
+li {
+  margin-bottom: 15px;
 }
 
 h1 {
@@ -192,10 +197,6 @@ button:disabled,
 @media (max-width: 768px) {
   body {
     font-size: 20px;
-  }
-
-  ul, ol {
-    padding: 0 0 0 10px;
   }
 
   .wp-block-column > * {
