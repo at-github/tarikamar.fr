@@ -1,0 +1,23 @@
+.blog p, .blog ul, .blog ol {
+  scroll-snap-align: end;
+}
+
+.CTA.read-more {
+  background: white;
+  color: black!important;
+  box-shadow: none;
+  border-radius: 30px;
+  padding: 10px 30px!important;
+  box-sizing: border-box;
+  scroll-snap-align: end;
+  display: block;
+  float: right;
+  margin: 30px 0;
+}
+
+/** NEXUS 7 **/
+@media (max-width: 601px) {
+  .CTA.read-more {
+    margin: 20px auto;
+  }
+}
