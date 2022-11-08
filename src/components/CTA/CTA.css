@@ -6,6 +6,7 @@
   transition: box-shadow 100ms ease-out;
   box-sizing: content-box;
   white-space: nowrap;
+  border-bottom: none;
 }
 
 #menu .CTA {
