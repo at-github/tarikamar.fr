@@ -26,6 +26,10 @@ body {
   margin: 0 auto;
 }
 
+body > * {
+  flex: 1;
+}
+
 p {
   padding: 5px 10px;
 }

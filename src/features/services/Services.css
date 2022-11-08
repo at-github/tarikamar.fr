@@ -2,6 +2,7 @@
 
 h1#title-main span {
   display: block;
+  white-space: nowrap;
 }
 
 /** WORDPRESS TEXT **/
