@@ -1,49 +1,36 @@
-import {QueryClient, QueryClientProvider, useQuery} from 'react-query'
-import {ReactQueryDevtools} from 'react-query/devtools'
-import myFetch from '../../services/myFetch'
 import Contact from '../../components/Contact'
-
-import LoadingIcon from '../../components/Icons/LoadingIcon'
+import useGetContent from '../../hooks/useGetContent'
 
 import './Services.css';
 
-const queryClient = new QueryClient()
+interface PageInterface {
+  content: {
+    rendered: string
+  }
+}
 
-function Content() {
-  const {isLoading, error, data} = useQuery('servicesData', () =>
-    myFetch('/wp/v2/pages/5')
-  )
-  const page = data || {content: {rendered: ''}}
-
-  if (isLoading) return <LoadingIcon />;
-
-  if (error) return <>'Une erreur est survenue'</>
+function Wrapper(props: {
+  fetched: PageInterface
+}) {
 
   return (
-    <>
-      <div className="content">
-        <div
-          className="editorial"
-          dangerouslySetInnerHTML={{__html: page.content.rendered}}
-        />
-        <div className="big-row">
-          <div>
-            <h1>Intéressé ?</h1>
-            <Contact />
-          </div>
+    <div className="content">
+      <div
+        className="editorial"
+        dangerouslySetInnerHTML={{
+          __html: props.fetched.content.rendered
+        }}
+      />
+      <div className="big-row">
+        <div>
+          <h1>Intéressé ?</h1>
+          <Contact />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-function Services() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Content />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-  )
+export default function Services() {
+  return useGetContent(Wrapper, '/wp/v2/pages/5')
 }
-
-export default Services;
