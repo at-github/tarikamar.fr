@@ -2,15 +2,20 @@
   scroll-snap-align: start;
 }
 
-.CTA.read-more {
+.read-more,
+.back {
   background: white;
-  color: black!important;
+  color: black;
   box-shadow: none;
   border-radius: 30px;
-  padding: 10px 30px!important;
+  padding: 10px 30px;
   box-sizing: border-box;
   display: block;
   margin: 30px auto;
+}
+
+.back svg {
+  width: 20px;
 }
 
 /** NEXUS 7 **/

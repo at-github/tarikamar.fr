@@ -1,6 +1,8 @@
 import {useState} from 'react'
 import useGetContent from '../../hooks/useGetContent'
+
 import LoadingIcon from '../../components/Icons/LoadingIcon'
+import BackIcon from '../../components/Icons/BackIcon'
 
 import './Blog.css'
 
@@ -34,7 +36,9 @@ function Wrapper(props: {
       >
         <button
           onClick={handleBackToBlog}
-        >back</button>
+          className="back"
+          title="Retour aux articles"
+        ><BackIcon /></button>
       </Post>
 
     return <LoadingIcon />
@@ -92,7 +96,7 @@ function Wrapper(props: {
               content={post.excerpt_read_more}
             >
               <button
-                className="CTA read-more"
+                className="read-more"
                 title="Lire la suite de l'article"
                 onClick={handleReadMore}
                 data-id={post.id}
