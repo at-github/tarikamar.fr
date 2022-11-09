@@ -2,10 +2,6 @@
   scroll-snap-align: start;
 }
 
-.blog footer::after {
-  scroll-snap-align: end;
-}
-
 .CTA.read-more {
   background: white;
   color: black!important;
@@ -14,8 +10,7 @@
   padding: 10px 30px!important;
   box-sizing: border-box;
   display: block;
-  float: right;
-  margin: 30px 0;
+  margin: 30px auto;
 }
 
 /** NEXUS 7 **/
