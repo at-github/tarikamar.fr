@@ -14,7 +14,30 @@ interface PostInterface {
   , title: {
     rendered: string
   }
+  , featured_media: number
   , excerpt_read_more: string
+}
+
+interface MediaInterface {
+  guid: {
+    rendered: string
+  }
+  , alt_text: string
+}
+
+function FeaturedImageWrapper(props: {
+  fetched: MediaInterface
+}) {
+  const imgSrc = props.fetched.guid.rendered
+  const imgAlt = props.fetched.alt_text
+
+  return <div className="featured-image">
+    <img src={imgSrc} alt={imgAlt}/>
+  </div>
+}
+
+function FeaturedImage(props: {id: number}) {
+  return useGetContent(FeaturedImageWrapper, `/wp/v2/media/${props.id}`)
 }
 
 function Wrapper(props: {
@@ -33,6 +56,7 @@ function Wrapper(props: {
         id={post.id}
         title={post.title.rendered}
         content={post.content.rendered}
+        featuredImageId={post.featured_media}
       >
         <button
           onClick={handleBackToBlog}
@@ -65,12 +89,14 @@ function Wrapper(props: {
       id: number
       , title: string
       , content: string
+      , featuredImageId: number
       , children: JSX.Element
     }) {
 
     return (
       <article>
         <h2>{props.title}</h2>
+        <FeaturedImage id={props.featuredImageId} />
         <div
           className="post"
           dangerouslySetInnerHTML={{
@@ -94,6 +120,7 @@ function Wrapper(props: {
               key={post.id}
               title={post.title.rendered}
               content={post.excerpt_read_more}
+              featuredImageId={post.featured_media}
             >
               <button
                 className="read-more"

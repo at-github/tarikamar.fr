@@ -1,4 +1,4 @@
-.blog p, .blog ul, .blog ol {
+.blog p, .blog ul, .blog ol, .featured-image {
   scroll-snap-align: start;
 }
 
@@ -16,6 +16,33 @@
 
 .back svg {
   width: 20px;
+}
+
+.featured-image {
+  border: 1px solid gray;
+  width: 400px;
+  height: 500px;
+  margin: 25px 0 25px 25px;
+  float: right;
+  overflow: hidden;
+}
+
+.featured-image img {
+  width: 400px;
+}
+
+/** IPAD AIR portrait **/
+@media (max-width: 768px) {
+  .featured-image {
+    margin-left: 0;
+    float: none;
+    width: auto;
+    height: 50vh;
+  }
+
+  .featured-image img {
+    width: 100%;
+  }
 }
 
 /** NEXUS 7 **/
