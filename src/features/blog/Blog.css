@@ -1,4 +1,4 @@
-.blog p, .blog ul, .blog ol, .featured-image {
+.blog p, .blog ul, .blog ol, .featured-image, figure {
   scroll-snap-align: start;
 }
 
@@ -29,6 +29,23 @@
 
 .featured-image img {
   width: 400px;
+}
+
+figure {
+  margin: 0;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+}
+
+figcaption {
+  background: lightgray;
+  font-size: 14px;
+  padding: 5px 10px;
+  text-align: center;
+  margin-top: -5px;
 }
 
 /** IPAD AIR portrait **/

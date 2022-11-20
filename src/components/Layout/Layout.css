@@ -67,7 +67,7 @@ h2 {
 
 h3 {
   font-family: 'Roboto Slab', serif;
-  font-size: 3vw;
+  font-size: 4vw;
 }
 
 .underline {
@@ -149,6 +149,10 @@ button:disabled,
   h2 {
     font-size: 4rem;
   }
+
+  h3 {
+    font-size: 3rem;
+  }
 }
 
 /** IPAD PRO portrait **/
@@ -212,6 +216,10 @@ button:disabled,
 
   h1 {
     margin: 50px 0;
+  }
+
+  h3 {
+    font-size: 1.5rem;
   }
 
   /** WORDPRESS COLUMNS **/
