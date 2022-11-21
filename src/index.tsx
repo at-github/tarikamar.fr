@@ -8,7 +8,8 @@ import {
 } from 'react-router-dom';
 import Layout from './components/Layout';
 import Services from './features/services';
-import Blog from './features/blog';
+import PostsController from './features/blog/Posts';
+import PostController from './features/blog/Post';
 import NotFound from './features/notfound';
 import reportWebVitals from './reportWebVitals';
 
@@ -22,7 +23,8 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Services />} />
         <Route path="services" element={<Services />} />
-        <Route path="blog" element={<Blog />} />
+        <Route path="blog" element={<PostsController />} />
+        <Route path="blog/:slug" element={<PostController />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
