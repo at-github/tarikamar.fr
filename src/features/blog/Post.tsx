@@ -20,16 +20,40 @@ export interface PostInterface {
   , slug: string
 }
 
-export function Wrapper(props: {
-    fetched: any
+interface MediaInterface {
+  guid: {
+    rendered: string
+  }
+  , alt_text: string
+}
+
+function FeaturedImageWrapper(props: {
+  fetched: MediaInterface
 }) {
-  const {title} = props.fetched
+  const imgSrc = props.fetched.guid.rendered
+  const imgAlt = props.fetched.alt_text
+
+  return <div className="featured-image">
+    <img src={imgSrc} alt={imgAlt}/>
+  </div>
+}
+
+function FeaturedImage(props: {id: number}) {
+  return useGetContent(FeaturedImageWrapper, `/wp/v2/media/${props.id}`)
+}
+
+export function Wrapper(props: {
+    fetched: PostInterface
+}) {
+  const title = props.fetched.title.rendered
   const content = props.fetched.content.rendered
+  const featuredMedia = props.fetched.featured_media
 
   return <BlogContainer>
     <Post
       title={title}
       content={content}
+      featuredMedia={featuredMedia}
     >
       <Link
         className="back"
@@ -42,11 +66,13 @@ export function Wrapper(props: {
 export function Post(props: {
     title: string
     , content: string
+    , featuredMedia: number
     , children: JSX.Element
 }) {
   return (
     <article>
       <h2>{props.title}</h2>
+      <FeaturedImage id={props.featuredMedia}/>
       <div
         className="post"
         dangerouslySetInnerHTML={{

@@ -18,6 +18,7 @@ function Wrapper(props: {
           return <Post
             title={post.title.rendered}
             content={post.excerpt_read_more}
+            featuredMedia={post.featured_media}
           >
             <Link
               className="read-more"
