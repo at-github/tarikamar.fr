@@ -10,7 +10,7 @@ export default function Footer(props: {
   return (
     <div id="footer">
       <HashLink
-        to={'/#menu'}
+        to={'#menu'}
         id="scroll-top"
         className={`button ${props.scrollTopVisible ? 'visible' : 'hide'}`}
       >
