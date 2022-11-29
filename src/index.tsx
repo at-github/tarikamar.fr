@@ -10,6 +10,7 @@ import Layout from './components/Layout';
 import Services from './features/services';
 import PostsController from './features/blog/Posts';
 import PostController from './features/blog/Post';
+import ExperiencesController from './features/cv/Experiences';
 import NotFound from './features/notfound';
 import reportWebVitals from './reportWebVitals';
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="services" element={<Services />} />
         <Route path="blog" element={<PostsController />} />
         <Route path="blog/:slug" element={<PostController />} />
+        <Route path="cv" element={<ExperiencesController />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

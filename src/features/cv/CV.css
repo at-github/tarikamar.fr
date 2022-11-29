@@ -1,0 +1,3 @@
+.cv p, h2, h3 {
+  scroll-snap-align: start;
+}
