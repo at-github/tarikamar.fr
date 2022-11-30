@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import useGetContent from '../../hooks/useGetContent'
 
 import BlogContainer from './BlogContainer'
@@ -87,5 +87,7 @@ export function Post(props: {
 }
 
 export default function PostController() {
-  return useGetContent(Wrapper, '/custom/v0/posts/lebioenvrac-fr')
+  const {slug} = useParams()
+
+  return useGetContent(Wrapper, `/custom/v0/posts/${slug}`)
 }
