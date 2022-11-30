@@ -21,6 +21,7 @@ function ExperienceWrapper(props: {
           company={xp.custom_fields.company}
           location={xp.custom_fields.location}
           period={xp.custom_fields.period}
+          key={xp.custom_fields.period}
         />
       })}
     </>
@@ -42,6 +43,7 @@ function FormationWrapper(props: {
           school={formation.custom_fields.school}
           location={formation.custom_fields.location}
           year={formation.custom_fields.year}
+          key={formation.title.rendered}
         />
       })}
     </>
@@ -49,7 +51,7 @@ function FormationWrapper(props: {
 }
 
 function ExperiencesController() {
-  return useGetContent(ExperienceWrapper, '/xp/experience')
+  return useGetContent(ExperienceWrapper, '/xp/experience?per_page=20')
 }
 
 function FormationsController() {
