@@ -1,0 +1,37 @@
+export interface FormationInterface {
+  id: number
+  , content: {
+      rendered: string
+    }
+  , title: {
+    rendered: string
+  }
+  , custom_fields: {
+    school: string
+    , year: string
+    , location: string
+  }
+}
+
+export function Formation(props: {
+    title: string
+    , content: string
+    , school: string
+    , location: string
+    , year: number
+}) {
+  return (
+    <article>
+      <h2>{props.title}</h2>
+      <h2>{props.school}</h2>
+      <h2>{props.location}</h2>
+      <h2>{props.year}</h2>
+      <div
+        className="post"
+        dangerouslySetInnerHTML={{
+          __html: props.content
+        }}
+      />
+    </article>
+  )
+}
