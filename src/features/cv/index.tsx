@@ -13,6 +13,7 @@ function ExperienceWrapper(props: {
 
   return (
     <>
+      <h2>Expériences</h2>
       {experiences.map((xp: ExperienceInterface) => {
         return <Experience
           title={xp.title.rendered}
@@ -33,6 +34,7 @@ function FormationWrapper(props: {
 
   return (
     <>
+      <h2>Formations</h2>
       {formations.map((formation: any) => {
         return <Formation
           title={formation.title.rendered}

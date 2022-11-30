@@ -1,3 +1,7 @@
 .cv p, h2, h3 {
   scroll-snap-align: start;
 }
+
+.cv h3 span {
+  font-weight: normal;
+}

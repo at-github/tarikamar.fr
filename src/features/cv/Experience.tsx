@@ -22,10 +22,8 @@ export function Experience(props: {
 }) {
   return (
     <article>
-      <h2>{props.title}</h2>
-      <h2>{props.company}</h2>
-      <h2>{props.location}</h2>
-      <h2>{props.period}</h2>
+      <h3>{props.title} <span>chez <em>{props.company}</em></span></h3>
+      <h4>{props.period} - {props.location}</h4>
       <div
         className="post"
         dangerouslySetInnerHTML={{

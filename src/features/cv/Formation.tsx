@@ -22,10 +22,8 @@ export function Formation(props: {
 }) {
   return (
     <article>
-      <h2>{props.title}</h2>
-      <h2>{props.school}</h2>
-      <h2>{props.location}</h2>
-      <h2>{props.year}</h2>
+      <h3>{props.title} <span>chez <em>{props.school}</em></span></h3>
+      <h4>{props.year} - {props.location}</h4>
       <div
         className="post"
         dangerouslySetInnerHTML={{
