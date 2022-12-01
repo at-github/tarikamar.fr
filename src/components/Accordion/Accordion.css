@@ -13,6 +13,7 @@
 
 .Accordion.hide button * {
   display: block;
+  margin: 0 auto;
 }
 
 .Accordion button svg {
@@ -22,4 +23,3 @@
 .Accordion.show > * {
   display: inherit;
 }
-

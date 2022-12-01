@@ -1,7 +1,28 @@
-.cv p, h2, h3, h4 {
+.cv p, h2, h3, h4, ul, li {
   scroll-snap-align: start;
+}
+
+.cv .read-more {
+  scroll-snap-align: end;
 }
 
 .cv h3 span {
   font-weight: normal;
+  white-space: nowrap;
+}
+
+@media (max-width: 376px) {
+  ul {
+    padding-left: 25px;
+  }
+
+  ul li {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 361px) {
+  ul {
+    padding-left: 15px;
+  }
 }
