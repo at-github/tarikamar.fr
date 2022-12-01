@@ -3,7 +3,7 @@ import 'moment/locale/fr';
 
 moment.locale('fr', null)
 
-export interface ExperienceInterface {
+export interface ExperienceApiInterface {
   id: number
   , content: {
       rendered: string
@@ -35,13 +35,19 @@ export function Experience(props: {
     , company: string
     , location: string
     , period: string
+    , collection: {
+      status: boolean
+      , position: string
+    }
 }) {
   return (
-    <article>
+    <article className={
+      `${props.collection.status === true ? 'collection' : ''}
+      ${props.collection.position}`
+    }>
       <h3>{props.title} <span>chez <em>{props.company}</em></span></h3>
       <h4>{formatPeriod(props.period)} : <em>{props.location}</em></h4>
       <div
-        className="post"
         dangerouslySetInnerHTML={{
           __html: props.content
         }}

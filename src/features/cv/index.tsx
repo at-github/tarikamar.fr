@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import useGetContent from '../../hooks/useGetContent'
 import bisectArray from '../../services/bisectArray'
-import {ExperienceInterface, Experience} from './Experience'
+import {ExperienceApiInterface, Experience} from './Experience'
 import {FormationInterface, Formation} from './Formation'
 
 import CVContainer from './CVContainer'
@@ -9,12 +9,71 @@ import Accordion from '../../components/Accordion'
 
 import './CV.css'
 
+interface ExperienceElementInterface {
+    content: string
+    , title: string
+    , company: string
+    , period: string
+    , location: string
+    , collection: {
+      status: boolean
+      , position: string
+    }
+}
+
+function prepareListExperiences(
+  experiences: ExperienceApiInterface[]
+): ExperienceElementInterface[] {
+  return experiences.map(experience => ({
+    content: experience.content.rendered
+    , title: experience.title.rendered
+    , company: experience.custom_fields.company
+    , period: experience.custom_fields.period
+    , location: experience.custom_fields.location
+    , collection: {
+      status: false
+      , position: ''
+    }
+  }))
+}
+
+function setCollection(experiences: ExperienceElementInterface[]) {
+  let previousExperience: ExperienceElementInterface = {
+    content: ''
+    , title: ''
+    , company: ''
+    , period: ''
+    , location: ''
+    , collection: {
+      status: false
+      , position: ''
+    }
+  }
+
+  let collectionIndex = 0
+
+  return experiences.map((experience, index) => {
+    const {company}                  = experience
+    const {company: previousCompany} = previousExperience
+
+    if (company === previousCompany) {
+      collectionIndex++
+      experience.collection =
+        previousExperience.collection = {
+          status: true
+          , position: collectionIndex === 1 ? 'first' : ''
+        }
+    }
+
+    return previousExperience = experience
+  })
+}
+
 function ExperienceWrapper(props: {
-  fetched: ExperienceInterface[]
+  fetched: ExperienceApiInterface[]
 }) {
   const [xpShowAll, setXPShowAll] = useState(false)
-
-  const experiences = props.fetched
+  const experiences = setCollection(prepareListExperiences(props.fetched))
 
   const [
     experiencesToShow,
@@ -26,14 +85,17 @@ function ExperienceWrapper(props: {
   return (
     <>
       <h2>💻Expériences</h2>
-      {experiencesToShow.map((xp: ExperienceInterface, index: number) => {
+      {experiencesToShow.map((
+        xp: ExperienceElementInterface, index: number
+      ) => {
         return <Experience
-          title={xp.title.rendered}
-          content={xp.content.rendered}
-          company={xp.custom_fields.company}
-          location={xp.custom_fields.location}
-          period={xp.custom_fields.period}
-          key={xp.custom_fields.period}
+          title={xp.title}
+          content={xp.content}
+          company={xp.company}
+          location={xp.location}
+          period={xp.period}
+          collection={xp.collection}
+          key={xp.period}
         />
       })}
 
@@ -43,14 +105,17 @@ function ExperienceWrapper(props: {
         titleToShow="Afficher plus d’expériences"
         titleToHide="Masquer quelques expériences"
       >
-        {experiencesToHide.map((xp: ExperienceInterface, index: number) => {
+        {experiencesToHide.map((
+          xp: ExperienceElementInterface, index: number
+        ) => {
           return <Experience
-            title={xp.title.rendered}
-            content={xp.content.rendered}
-            company={xp.custom_fields.company}
-            location={xp.custom_fields.location}
-            period={xp.custom_fields.period}
-            key={xp.custom_fields.period}
+            title={xp.title}
+            content={xp.content}
+            company={xp.company}
+            location={xp.location}
+            period={xp.period}
+            collection={xp.collection}
+            key={xp.period}
           />
         })}
       </Accordion>
