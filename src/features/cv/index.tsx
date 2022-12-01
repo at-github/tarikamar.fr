@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import useGetContent from '../../hooks/useGetContent'
+import bisectArray from '../../services/bisectArray'
 import {ExperienceInterface, Experience} from './Experience'
 import {FormationInterface, Formation} from './Formation'
 
@@ -7,13 +8,6 @@ import CVContainer from './CVContainer'
 import Accordion from '../../components/Accordion'
 
 import './CV.css'
-
-function paginateArray(array: ExperienceInterface[], limit: number) {
-  return [
-    array.slice(0, limit)
-    , array.slice(limit)
-  ]
-}
 
 function ExperienceWrapper(props: {
   fetched: ExperienceInterface[]
@@ -25,7 +19,7 @@ function ExperienceWrapper(props: {
   const [
     experiencesToShow,
     experiencesToHide
-  ] = paginateArray(experiences, 8)
+  ] = bisectArray(experiences, 8)
 
   const handleXPShowAll = () => setXPShowAll(!xpShowAll)
 
@@ -67,12 +61,20 @@ function ExperienceWrapper(props: {
 function FormationWrapper(props: {
   fetched: FormationInterface[]
 }) {
+  const [formationShowAll, setFormationShowAll] = useState(false)
   const formations = props.fetched
+
+  const [
+    formationsToShow,
+    formationsToHide
+  ] = bisectArray(formations, 4)
+
+  const handleFormationShowAll = () => setFormationShowAll(!formationShowAll)
 
   return (
     <>
       <h2>🎓 Formations</h2>
-      {formations.map((formation: any) => {
+      {formationsToShow.map((formation: any) => {
         return <Formation
           title={formation.title.rendered}
           content={formation.content.rendered}
@@ -82,6 +84,24 @@ function FormationWrapper(props: {
           key={formation.title.rendered}
         />
       })}
+
+      <Accordion
+        handleOpen={handleFormationShowAll}
+        open={formationShowAll}
+        titleToShow="Afficher plus de formations"
+        titleToHide="Masquer quelques formations"
+      >
+        {formationsToHide.map((formation: any) => {
+          return <Formation
+            title={formation.title.rendered}
+            content={formation.content.rendered}
+            school={formation.custom_fields.school}
+            location={formation.custom_fields.location}
+            year={formation.custom_fields.year}
+            key={formation.title.rendered}
+          />
+        })}
+      </Accordion>
     </>
   )
 }
