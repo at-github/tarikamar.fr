@@ -1,12 +1,25 @@
-.Accordion {
-  cursor: pointer;
+.Accordion .read-more {
+  margin: 0 auto;
+  font-size: 0.75rem;
 }
 
 .Accordion.hide * {
   display: none;
 }
 
-.Accordion.show * {
+.Accordion.hide button {
+  display: block;
+}
+
+.Accordion.hide button * {
+  display: block;
+}
+
+.Accordion button svg {
+  width: 18px;
+}
+
+.Accordion.show > * {
   display: inherit;
 }
 
