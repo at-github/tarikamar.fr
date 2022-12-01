@@ -1,0 +1,12 @@
+.Accordion {
+  cursor: pointer;
+}
+
+.Accordion.hide * {
+  display: none;
+}
+
+.Accordion.show * {
+  display: inherit;
+}
+
