@@ -39,7 +39,18 @@
   top: 20px;
 }
 
-.collection.last {
+/** CONTACT **/
+.contact h1 {
+  margin: 20px 0 0 0;
+}
+
+.contact p {
+  margin: 10px 0;
+}
+
+.contact h3,
+.contact p {
+  text-align: center;
 }
 
 @media (max-width: 1024px) {
@@ -84,8 +95,18 @@
   }
 }
 
+/** FAIRPHONE 3+ **/
 @media (max-width: 361px) {
   ul {
     padding-left: 15px;
+  }
+
+  .contact p {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .contact h3 {
+    margin: 5px 0;
   }
 }

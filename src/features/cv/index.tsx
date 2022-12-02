@@ -3,6 +3,7 @@ import useGetContent from '../../hooks/useGetContent'
 import bisectArray from '../../services/bisectArray'
 import {ExperienceApiInterface, Experience} from './Experience'
 import {FormationInterface, Formation} from './Formation'
+import Contact from '../../components/Contact'
 
 import CVContainer from './CVContainer'
 import Accordion from '../../components/Accordion'
@@ -184,6 +185,17 @@ export default function CVController() {
     <>
       <ExperiencesController />
       <FormationsController />
+      <div className="big-row contact">
+        <div>
+          <h3>Vous recherchez un développeur ?</h3>
+          <p>
+            Actuellement en recherche active
+            d'une entreprise contribuant au bien commun
+          </p>
+          <h1>Contactez moi</h1>
+          <Contact />
+        </div>
+      </div>
     </>
   </CVContainer>
 }
