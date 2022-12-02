@@ -46,7 +46,7 @@ const Menu = forwardRef<HTMLDivElement>(
           <li><NavLink to={'/cv'}>CV</NavLink></li>
           <li>
             <NavHashLink
-              to={'/services/#contact'}
+              to={'#contact'}
               className="CTA"
             >
               Concatez-moi
