@@ -11,15 +11,15 @@ import './Menu.css'
 const Menu = forwardRef<HTMLDivElement>(
   (_, ref) => {
     const [open, setOpen] = useState(false)
-    const handleClose = function(e: any) {
+    const handleClose = function() {
       setOpen(false)
     }
 
-    const handleOpen = function(e: any) {
+    const handleOpen = function() {
       setOpen(true)
     }
 
-    const handleClickOutside = function(e: any) {
+    const handleClickOutside = function() {
       setOpen(false)
     }
 
