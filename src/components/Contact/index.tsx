@@ -4,7 +4,7 @@ import CTA from '../CTA'
 
 import AlarmIcon from '../Icons/AlarmIcon'
 
-import '../../Form.css'
+import './Contact.css'
 
 interface InterfaceProps {}
 
