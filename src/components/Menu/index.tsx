@@ -5,7 +5,7 @@ import {NavHashLink} from 'react-router-hash-link'
 import MenuIcon from '../Icons/MenuIcon'
 import CloseIcon from '../Icons/CloseIcon'
 
-import './Menu.css';
+import './Menu.css'
 
 
 const Menu = forwardRef<HTMLDivElement>(

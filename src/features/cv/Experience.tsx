@@ -1,5 +1,5 @@
 import moment from 'moment'
-import 'moment/locale/fr';
+import 'moment/locale/fr'
 
 moment.locale('fr', null)
 

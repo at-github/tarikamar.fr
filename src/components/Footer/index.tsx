@@ -1,8 +1,8 @@
-import {HashLink} from 'react-router-hash-link';
+import {HashLink} from 'react-router-hash-link'
 
 import ArrowUpIcon from '../Icons/ArrowUpIcon'
 
-import './Footer.css';
+import './Footer.css'
 
 export default function Footer(props: {
   scrollTopVisible: Boolean

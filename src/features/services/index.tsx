@@ -1,7 +1,7 @@
 import Contact from '../../components/Contact'
 import useGetContent from '../../hooks/useGetContent'
 
-import './Services.css';
+import './Services.css'
 
 interface PageInterface {
   content: {
@@ -28,7 +28,7 @@ function Wrapper(props: {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default function Services() {

@@ -13,7 +13,7 @@ function Content(props: {
     myFetch(props.url)
   )
 
-  if (isLoading) return <LoadingIcon />;
+  if (isLoading) return <LoadingIcon />
 
   if (error) return <>'Une erreur est survenue'</>
 
@@ -34,4 +34,4 @@ function useGetContent(
   )
 }
 
-export default useGetContent;
+export default useGetContent

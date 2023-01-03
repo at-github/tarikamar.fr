@@ -1,6 +1,6 @@
-import LoadingIcon from '../Icons/LoadingIcon';
+import LoadingIcon from '../Icons/LoadingIcon'
 
-import './CTA.css';
+import './CTA.css'
 
 const CTA = function(props: {
     disabled?: boolean
@@ -22,4 +22,4 @@ const CTA = function(props: {
   )
 }
 
-export default CTA;
+export default CTA

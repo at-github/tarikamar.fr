@@ -1,10 +1,10 @@
-import {useRef} from 'react';
-import {Outlet} from 'react-router-dom';
-import Menu from '../Menu';
-import Footer from '../Footer';
+import {useRef} from 'react'
+import {Outlet} from 'react-router-dom'
+import Menu from '../Menu'
+import Footer from '../Footer'
 import  useIntersectionObserver from '../../hooks/useIntersectionObserver'
 
-import './Layout.css';
+import './Layout.css'
 
 export default function Layout() {
   const ref = useRef<HTMLDivElement | null>(null)
