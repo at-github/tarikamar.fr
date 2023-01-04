@@ -1,6 +1,6 @@
 import {QueryClient, QueryClientProvider, useQuery} from 'react-query'
 import {ReactQueryDevtools} from 'react-query/devtools'
-import myFetch from '../services/myFetch'
+import {get} from '../services/api'
 
 import LoadingIcon from '../components/Icons/LoadingIcon'
 
@@ -9,8 +9,9 @@ function Content(props: {
     , url: string
   }
 ) {
-  const {isLoading, error, data} = useQuery('data', () =>
-    myFetch(props.url)
+  const {isLoading, error, data} = useQuery(
+    'data',
+    () => get(props.url)
   )
 
   if (isLoading) return <LoadingIcon />
@@ -28,7 +29,7 @@ function useGetContent(
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Content url={url} Component={Component}/>
+      <Content url={url} Component={Component} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )

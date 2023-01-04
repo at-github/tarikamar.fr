@@ -1,5 +1,5 @@
 import React from 'react'
-import myFetch from '../../services/myFetch'
+import {postContact} from '../../services/api'
 import CTA from '../CTA'
 
 import AlarmIcon from '../Icons/AlarmIcon'
@@ -144,14 +144,7 @@ export default class Contact extends React.Component<
     body.append('your-email', this.state.email.value)
     body.append('your-message', this.state.message.value)
 
-    myFetch(
-      '/contact-form-7/v1/contact-forms/49/feedback'
-      , {
-        body
-        , method: 'POST'
-        , callback: this.setFormSent
-      }
-    ).then(response => {
+    postContact(body, this.setFormSent).then(response => {
       if (response.invalid_fields && response.invalid_fields.length > 0) {
 
         response.invalid_fields.forEach((field: any) => {
