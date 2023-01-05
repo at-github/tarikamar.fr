@@ -117,52 +117,63 @@ export default class Contact extends React.Component<
       this.setState({form: {state: EnumFormState.sent}})
   }
 
+  handleError(fields: {'your-email'?: string, 'your-message'?: string}[]) {
+    fields.forEach((field: any) => {
+      if (field.field === 'your-email')
+        this.setState((prevState: InterfaceState) =>
+          ({email: {...prevState.email, valid: false}})
+        )
+
+      if (field.field === 'your-message')
+        this.setState((prevState: InterfaceState) =>
+          ({message: {...prevState.message, valid: false}})
+        )
+    })
+
+    this.setState((prevState: InterfaceState) =>
+      ({form: {...prevState.form, state: EnumFormState.none}})
+    )
+  }
+
+  isFormValid() {
+    return this.state.email.valid && this.state.message.valid
+  }
+
+  buildFormData() {
+    const formData = new FormData()
+    formData.append('your-email', this.state.email.value)
+    formData.append('your-message', this.state.message.value)
+
+    return formData
+  }
+
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (
-      this.state.email.valid === false
-      || this.state.message.valid === false
-    ) {
-      if (this.state.email.value === '')
-        this.setState((prevState: InterfaceState) =>
-          ({email: {...prevState.email, edited: true}})
-        )
-
-      if (this.state.message.value === '')
-        this.setState((prevState: InterfaceState) =>
-          ({message: {...prevState.message, edited: true}})
-        )
-
-      return
-    }
 
     this.setState((prevState: InterfaceState) =>
       ({form: {...prevState.form, state: EnumFormState.processing}})
     )
 
-    const body = new FormData()
-    body.append('your-email', this.state.email.value)
-    body.append('your-message', this.state.message.value)
+    // Field even empty is set as edited, so error can be displayed
+
+    if (this.state.email.value === '')
+      this.setState((prevState: InterfaceState) =>
+        ({email: {...prevState.email, edited: true}})
+      )
+
+    if (this.state.message.value === '')
+      this.setState((prevState: InterfaceState) =>
+        ({message: {...prevState.message, edited: true}})
+      )
+
+    if (!this.isFormValid())
+      return
+
+    const body = this.buildFormData()
 
     postContact(body, this.setFormSent).then(response => {
-      if (response.invalid_fields && response.invalid_fields.length > 0) {
-
-        response.invalid_fields.forEach((field: any) => {
-          if (field.field === 'your-email')
-            this.setState((prevState: InterfaceState) =>
-              ({email: {...prevState.email, valid: false}})
-            )
-
-          if (field.field === 'your-message')
-            this.setState((prevState: InterfaceState) =>
-              ({message: {...prevState.message, valid: false}})
-            )
-        })
-
-        this.setState((prevState: InterfaceState) =>
-          ({form: {...prevState.form, state: EnumFormState.none}})
-        )
-      }
+      if (response.invalid_fields && response.invalid_fields.length > 0)
+        return this.handleError(response.invalid_fields)
     })
   }
 
@@ -191,7 +202,8 @@ export default class Contact extends React.Component<
                 ' visible' : ''
             }`}
           >
-            <AlarmIcon />Désolé mais un email valide est requis
+            <AlarmIcon />
+            Désolé mais un email valide est requis
           </label>
           <input
             type="email"
