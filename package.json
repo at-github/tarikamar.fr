@@ -28,6 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
+    "testwatch": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,5 +51,10 @@
   },
   "devDependencies": {
     "@types/react-router-hash-link": "^2.4.5"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "src/components/Icons"
+    ]
   }
 }
