@@ -20,7 +20,7 @@ export default function PostsController() {
           return <Post
             title={post.title.rendered}
             content={post.excerpt_read_more}
-            featuredMedia={post.featured_media}
+            featuredMediaUrl={post.featured_media_url}
           >
             <Link
               className="read-more"

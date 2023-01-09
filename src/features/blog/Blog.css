@@ -27,7 +27,7 @@ footer {
   border: 1px solid gray;
   width: 400px;
   height: 500px;
-  margin: 25px 0 25px 25px;
+  margin: 10px 0 25px 25px;
   float: right;
   overflow: hidden;
 }

@@ -15,26 +15,14 @@ export interface PostInterface {
   , title: {
     rendered: string
   }
-  , featured_media: number
+  , featured_media_url: string
   , excerpt_read_more: string
   , slug: string
 }
 
-interface MediaInterface {
-  guid: {
-    rendered: string
-  }
-  , alt_text: string
-}
-
-function FeaturedImageWrapper(props: {
-  fetched: MediaInterface
-}) {
-  const imgSrc = props.fetched.guid.rendered
-  const imgAlt = props.fetched.alt_text
-
+function FeaturedImage(props: {src: string, alt: string}) {
   return <div className="featured-image">
-    <img src={imgSrc} alt={imgAlt}/>
+    <img src={props.src} alt={props.alt} />
   </div>
 }
 
@@ -43,16 +31,16 @@ export function getPost({params}: LoaderFunctionArgs) {
 }
 
 export default function PostController() {
-  const post          = useLoaderData() as PostInterface
-  const title         = post.title.rendered
-  const content       = post.content.rendered
-  const featuredMedia = post.featured_media
+  const post             = useLoaderData() as PostInterface
+  const title            = post.title.rendered
+  const content          = post.content.rendered
+  const featuredMediaUrl = post.featured_media_url
 
   return <BlogContainer>
     <Post
       title={title}
       content={content}
-      featuredMedia={featuredMedia}
+      featuredMediaUrl={featuredMediaUrl}
     >
       <Link
         className="back"
@@ -65,13 +53,13 @@ export default function PostController() {
 export function Post(props: {
     title: string
     , content: string
-    , featuredMedia: number
+    , featuredMediaUrl: string
     , children: JSX.Element
 }) {
   return (
     <article>
       <h2>{props.title}</h2>
-      <FeaturedImage id={props.featuredMedia}/>
+      <FeaturedImage src={props.featuredMediaUrl} alt={props.title} />
       <div
         className="post"
         dangerouslySetInnerHTML={{
