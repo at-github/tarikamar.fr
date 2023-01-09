@@ -8,7 +8,7 @@ import {
 import Layout from './components/Layout'
 import Services, {getServices} from './features/services'
 import PostsController, {getPosts} from './features/blog/Posts'
-import PostController from './features/blog/Post'
+import PostController, {getPost} from './features/blog/Post'
 import CVController from './features/cv'
 import NotFound from './features/notfound'
 import reportWebVitals from './reportWebVitals'
@@ -36,6 +36,7 @@ const router = createBrowserRouter([
       , {
         path: '/blog/:slug'
         , element: <PostController />
+        , loader: getPost
       }
       , {
         path: '/cv'

@@ -1,7 +1,7 @@
-import {Link, useParams} from 'react-router-dom'
-import useGetContent from '../../hooks/useGetContent'
+import {Link, LoaderFunctionArgs, useLoaderData} from 'react-router-dom'
 
 import BlogContainer from './BlogContainer'
+import {get} from '../../services/api'
 
 import BackIcon from '../../components/Icons/BackIcon'
 
@@ -38,16 +38,15 @@ function FeaturedImageWrapper(props: {
   </div>
 }
 
-function FeaturedImage(props: {id: number}) {
-  return useGetContent(FeaturedImageWrapper, `/wp/v2/media/${props.id}`)
+export function getPost({params}: LoaderFunctionArgs) {
+  return get(`/custom/v0/posts/${params.slug}`)
 }
 
-export function Wrapper(props: {
-    fetched: PostInterface
-}) {
-  const title = props.fetched.title.rendered
-  const content = props.fetched.content.rendered
-  const featuredMedia = props.fetched.featured_media
+export default function PostController() {
+  const post          = useLoaderData() as PostInterface
+  const title         = post.title.rendered
+  const content       = post.content.rendered
+  const featuredMedia = post.featured_media
 
   return <BlogContainer>
     <Post
@@ -84,10 +83,4 @@ export function Post(props: {
       </footer>
     </article>
   )
-}
-
-export default function PostController() {
-  const {slug} = useParams()
-
-  return useGetContent(Wrapper, `/custom/v0/posts/${slug}`)
 }
