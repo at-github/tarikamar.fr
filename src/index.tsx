@@ -6,7 +6,7 @@ import {
   , RouterProvider
 } from 'react-router-dom'
 import Layout from './components/Layout'
-import Services from './features/services'
+import Services, {getServices} from './features/services'
 import PostsController from './features/blog/Posts'
 import PostController from './features/blog/Post'
 import CVController from './features/cv'
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
       {
         index: true
         , element: <Services />
+        , loader: getServices
       }
       , {
         path: '/blog'

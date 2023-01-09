@@ -1,24 +1,29 @@
+import {useLoaderData} from 'react-router-dom'
+
+import {get} from '../../services/api'
 import Contact from '../../components/Contact'
-import useGetContent from '../../hooks/useGetContent'
 
 import './Services.css'
 
-interface PageInterface {
+interface APIServicesResponse {
   content: {
     rendered: string
   }
 }
 
-function Wrapper(props: {
-  fetched: PageInterface
-}) {
+export function getServices() {
+  return get('/wp/v2/pages/5')
+}
+
+export default function Services() {
+  const page = useLoaderData() as APIServicesResponse
 
   return (
     <div className="content services">
       <div
         className="editorial"
         dangerouslySetInnerHTML={{
-          __html: props.fetched.content.rendered
+          __html: page.content.rendered
         }}
       />
       <div className="big-row">
@@ -29,8 +34,4 @@ function Wrapper(props: {
       </div>
     </div>
   )
-}
-
-export default function Services() {
-  return useGetContent(Wrapper, '/wp/v2/pages/5')
 }

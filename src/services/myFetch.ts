@@ -17,7 +17,18 @@ const myFetch = (
       , body: options && options.body ? options.body : null
     }
   )
-    .then(res => res.json())
+    .then(res => {
+      if (res.status >= 400)
+        throw new Response(
+          ''
+          , {
+            status: res.status
+            , statusText: res.statusText
+          }
+        )
+
+      return res.json()
+    })
     .then(json => {
       if (options && options.callback)
         options.callback(json)
