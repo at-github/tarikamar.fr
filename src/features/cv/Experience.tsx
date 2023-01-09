@@ -3,7 +3,7 @@ import 'moment/locale/fr'
 
 moment.locale('fr', null)
 
-export interface ExperienceApiInterface {
+export interface ExperienceAPIInterface {
   id: number
   , content: {
       rendered: string

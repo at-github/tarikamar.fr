@@ -26,7 +26,7 @@ export default function Services() {
           __html: page.content.rendered
         }}
       />
-      <div className="big-row">
+      <div className="big-row contact">
         <div>
           <h1>Intéressé ?</h1>
           <Contact />

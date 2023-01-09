@@ -1,8 +1,9 @@
 import {useState} from 'react'
-import useGetContent from '../../hooks/useGetContent'
+import {useLoaderData} from 'react-router-dom'
+import {get} from '../../services/api'
 import bisectArray from '../../services/bisectArray'
-import {ExperienceApiInterface, Experience} from './Experience'
-import {FormationInterface, Formation} from './Formation'
+import {ExperienceAPIInterface, Experience} from './Experience'
+import {FormationAPIInterface, Formation} from './Formation'
 import Contact from '../../components/Contact'
 
 import CVContainer from './CVContainer'
@@ -23,7 +24,7 @@ interface ExperienceElementInterface {
 }
 
 function prepareListExperiences(
-  experiences: ExperienceApiInterface[]
+  experiences: ExperienceAPIInterface[]
 ): ExperienceElementInterface[] {
   return experiences.map(experience => ({
     content: experience.content.rendered
@@ -70,11 +71,10 @@ function setCollection(experiences: ExperienceElementInterface[]) {
   })
 }
 
-function ExperienceWrapper(props: {
-  fetched: ExperienceApiInterface[]
-}) {
+function Experiences() {
   const [xpShowAll, setXPShowAll] = useState(false)
-  const experiences = setCollection(prepareListExperiences(props.fetched))
+  const data = useLoaderData() as {experiences: ExperienceAPIInterface[]}
+  const experiences = setCollection(prepareListExperiences(data.experiences))
 
   const [
     experiencesToShow,
@@ -87,7 +87,7 @@ function ExperienceWrapper(props: {
     <>
       <h2>💻Expériences</h2>
       {experiencesToShow.map((
-        xp: ExperienceElementInterface, index: number
+        xp: ExperienceElementInterface
       ) => {
         return <Experience
           title={xp.title}
@@ -124,11 +124,9 @@ function ExperienceWrapper(props: {
   )
 }
 
-function FormationWrapper(props: {
-  fetched: FormationInterface[]
-}) {
+function Formations() {
   const [formationShowAll, setFormationShowAll] = useState(false)
-  const formations = props.fetched
+  const {formations} = useLoaderData() as {formations: FormationAPIInterface[]}
 
   const [
     formationsToShow,
@@ -172,19 +170,27 @@ function FormationWrapper(props: {
   )
 }
 
-function ExperiencesController() {
-  return useGetContent(ExperienceWrapper, '/xp/experience?per_page=20')
+function getExperiences() {
+  return get('/xp/experience?per_page=20') // By default it's return 10 items
 }
 
-function FormationsController() {
-  return useGetContent(FormationWrapper, '/edu/formation')
+function getFormations() {
+  return get('/edu/formation')
+}
+
+export async function getCV() {
+  return {
+    experiences: await getExperiences()
+    , formations: await getFormations()
+  }
 }
 
 export default function CVController() {
+  // FIXME check contact class on other page
   return <CVContainer>
     <>
-      <ExperiencesController />
-      <FormationsController />
+      <Experiences />
+      <Formations />
       <div className="big-row contact">
         <div>
           <h3>Vous recherchez un développeur ?</h3>

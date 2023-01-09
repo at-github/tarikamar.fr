@@ -1,4 +1,4 @@
-export interface FormationInterface {
+export interface FormationAPIInterface {
   id: number
   , content: {
       rendered: string
