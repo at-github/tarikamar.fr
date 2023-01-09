@@ -2,9 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {
-  Routes,
-  Route,
-  BrowserRouter
+  createBrowserRouter
+  , RouterProvider
 } from 'react-router-dom'
 import Layout from './components/Layout'
 import Services from './features/services'
@@ -18,26 +17,35 @@ const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('Failed to find the root element')
 const root = ReactDOM.createRoot(rootElement)
 
-function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Services />} />
-        <Route path="services" element={<Services />} />
-        <Route path="blog" element={<PostsController />} />
-        <Route path="blog/:slug" element={<PostController />} />
-        <Route path="cv" element={<CVController />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
-  )
-}
+const router = createBrowserRouter([
+  {
+    path: '/'
+    , element: <Layout />
+    , errorElement: <NotFound />
+    , children: [
+      {
+        index: true
+        , element: <Services />
+      }
+      , {
+        path: '/blog'
+        , element: <PostsController />
+      }
+      , {
+        path: '/blog/:slug'
+        , element: <PostController />
+      }
+      , {
+        path: '/cv'
+        , element: <CVController />
+      }
+    ]
+  }
+])
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 )
 
