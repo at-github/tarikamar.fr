@@ -1,15 +1,17 @@
-import {Link} from 'react-router-dom'
-import useGetContent from '../../hooks/useGetContent'
+import {Link, useLoaderData} from 'react-router-dom'
 import {PostInterface, Post} from './Post'
+import {get} from '../../services/api'
 
 import BlogContainer from './BlogContainer'
 
 import './Blog.css'
 
-function Wrapper(props: {
-  fetched: PostInterface[]
-}) {
-  const posts = props.fetched
+export function getPosts() {
+  return get('/wp/v2/posts')
+}
+
+export default function PostsController() {
+  const posts = useLoaderData() as PostInterface[]
 
   return (
     <BlogContainer>
@@ -29,8 +31,4 @@ function Wrapper(props: {
       </>
     </BlogContainer>
   )
-}
-
-export default function PostsController() {
-  return useGetContent(Wrapper, '/wp/v2/posts')
 }

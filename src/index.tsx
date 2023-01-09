@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 import Layout from './components/Layout'
 import Services, {getServices} from './features/services'
-import PostsController from './features/blog/Posts'
+import PostsController, {getPosts} from './features/blog/Posts'
 import PostController from './features/blog/Post'
 import CVController from './features/cv'
 import NotFound from './features/notfound'
@@ -31,6 +31,7 @@ const router = createBrowserRouter([
       , {
         path: '/blog'
         , element: <PostsController />
+        , loader: getPosts
       }
       , {
         path: '/blog/:slug'
