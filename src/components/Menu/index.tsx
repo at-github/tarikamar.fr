@@ -1,12 +1,15 @@
 import {useState, forwardRef} from 'react'
 import {NavLink} from 'react-router-dom'
-import {NavHashLink} from 'react-router-hash-link'
 
 import MenuIcon from '../Icons/MenuIcon'
 import CloseIcon from '../Icons/CloseIcon'
 
 import './Menu.css'
 
+const scrollToBottom = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault()
+  window.scrollTo(0, document.body.scrollHeight)
+}
 
 const Menu = forwardRef<HTMLDivElement>(
   (_, ref) => {
@@ -45,12 +48,13 @@ const Menu = forwardRef<HTMLDivElement>(
           <li><NavLink to={'/blog'}>Blog</NavLink></li>
           <li><NavLink to={'/cv'}>CV</NavLink></li>
           <li>
-            <NavHashLink
-              to={'#contact'}
+            <a
+              href="#contact"
+              onClick={scrollToBottom}
               className="CTA"
             >
               Concatez-moi
-            </NavHashLink>
+            </a>
           </li>
         </ul>
       </nav>

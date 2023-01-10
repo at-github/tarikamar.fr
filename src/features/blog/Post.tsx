@@ -1,7 +1,12 @@
-import {Link, LoaderFunctionArgs, useLoaderData} from 'react-router-dom'
+import {
+  ActionFunctionArgs
+  , Link
+  , LoaderFunctionArgs
+  , useLoaderData
+} from 'react-router-dom'
 
 import BlogContainer from './BlogContainer'
-import {get} from '../../services/api'
+import {get, postContact} from '../../services/api'
 
 import BackIcon from '../../components/Icons/BackIcon'
 
@@ -20,14 +25,24 @@ export interface PostInterface {
   , slug: string
 }
 
-function FeaturedImage(props: {src: string, alt: string}) {
-  return <div className="featured-image">
-    <img src={props.src} alt={props.alt} />
-  </div>
+export async function postContactFromPostAction(
+  {request}: ActionFunctionArgs
+) {
+  const [, slug] = window.location.href.split('.fr')
+  const formData = await request.formData()
+  formData.append('your-subject', `À propos de l’article : ${slug}`)
+
+  return postContact(formData).then(response => response)
 }
 
 export function getPost({params}: LoaderFunctionArgs) {
   return get(`/custom/v0/posts/${params.slug}`)
+}
+
+function FeaturedImage(props: {src: string, alt: string}) {
+  return <div className="featured-image">
+    <img src={props.src} alt={props.alt} />
+  </div>
 }
 
 export default function Post() {

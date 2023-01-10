@@ -1,18 +1,11 @@
 import React, { useState } from 'react'
-import {ActionFunctionArgs, Form, useActionData} from 'react-router-dom';
+import {Form, useActionData} from 'react-router-dom';
 
-import {postContact} from '../../services/api'
 import CTA from '../CTA'
 
 import AlarmIcon from '../Icons/AlarmIcon'
 
 import './Contact.css'
-
-export async function postContactAction({request} : ActionFunctionArgs) {
-  const formData = await request.formData()
-
-  return postContact(formData).then(response => response)
-}
 
 function Thanking() {
   return (

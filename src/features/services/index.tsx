@@ -1,7 +1,8 @@
-import {useLoaderData} from 'react-router-dom'
+import {ActionFunctionArgs, useLoaderData} from 'react-router-dom'
 
 import {get} from '../../services/api'
 import Contact from '../../components/Contact'
+import {postContact} from '../../services/api'
 
 import './Services.css'
 
@@ -13,6 +14,15 @@ interface APIServicesResponse {
 
 export function getServices() {
   return get('/wp/v2/pages/5')
+}
+
+export async function postContactFromServicesAction(
+  {request}: ActionFunctionArgs
+) {
+  const formData = await request.formData()
+  formData.append('your-subject', 'Concernant vos services')
+
+  return postContact(formData).then(response => response)
 }
 
 export default function Services() {

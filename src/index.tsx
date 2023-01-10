@@ -1,3 +1,4 @@
+import reportWebVitals from './reportWebVitals'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
@@ -6,13 +7,23 @@ import {
   , RouterProvider
 } from 'react-router-dom'
 import Layout from './components/Layout'
-import Services, {getServices} from './features/services'
-import Posts, {getPosts} from './features/blog/Posts'
-import Post, {getPost} from './features/blog/Post'
-import CV, {getCV} from './features/cv'
-import {postContactAction} from './components/Contact'
+import Services, {
+  getServices
+  , postContactFromServicesAction
+} from './features/services'
+import Posts, {
+  getPosts,
+  postContactFromPostsAction
+} from './features/blog/Posts'
+import Post, {
+  getPost
+  , postContactFromPostAction
+} from './features/blog/Post'
+import CV, {
+  getCV
+  , postContactFromCVAction
+} from './features/cv'
 import ErrorPage from './features/errorpage'
-import reportWebVitals from './reportWebVitals'
 
 const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('Failed to find the root element')
@@ -28,22 +39,25 @@ const router = createBrowserRouter([
         index: true
         , element: <Services />
         , loader: getServices
-        , action: postContactAction
+        , action: postContactFromServicesAction
       }
       , {
         path: '/blog'
         , element: <Posts />
         , loader: getPosts
+        , action: postContactFromPostsAction
       }
       , {
         path: '/blog/:slug'
         , element: <Post />
         , loader: getPost
+        , action: postContactFromPostAction
       }
       , {
         path: '/cv'
         , element: <CV />
         , loader: getCV
+        , action: postContactFromCVAction
       }
     ]
   }
