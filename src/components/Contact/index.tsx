@@ -36,6 +36,22 @@ export async function postContactAction({request} : ActionFunctionArgs) {
   return postContact(formData).then(response => response)
 }
 
+function Thanking() {
+  return (
+    <div className="thanking">
+      <p>
+        <img
+          src="/img/confetti-outline.apng"
+          width="200px"
+          height="200px"
+          alt="Message envoyé !"
+        />
+      </p>
+      <h3>À bientôt</h3>
+    </div>
+  )
+}
+
 export default function Contact() {
   const postContactResponse = useActionData() as {
     status: string
@@ -45,19 +61,7 @@ export default function Contact() {
   const [email, setEmail] = useState({edited: false, valid: false})
 
   if (postContactResponse?.status === 'mail_sent')
-    return (
-      <div className="thanking">
-        <p>
-          <img
-            src="/img/confetti-outline.apng"
-            width="200px"
-            height="200px"
-            alt="Message envoyé !"
-          />
-        </p>
-        <h3>À bientôt</h3>
-      </div>
-    )
+    return <Thanking />
 
   const state = {
     email: {
