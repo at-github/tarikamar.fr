@@ -163,8 +163,7 @@ export default function Contact() {
 
       <div className="form-row">
         <CTA
-          disabled={state.form.state === EnumFormState.processing}
-          loading={state.form.state === EnumFormState.processing}
+          disabled={!(email.valid && message.valid)}
           text="Contactez-moi"
         />
       </div>
