@@ -7,9 +7,9 @@ import {
 } from 'react-router-dom'
 import Layout from './components/Layout'
 import Services, {getServices} from './features/services'
-import PostsController, {getPosts} from './features/blog/Posts'
-import PostController, {getPost} from './features/blog/Post'
-import CVController, {getCV} from './features/cv'
+import Posts, {getPosts} from './features/blog/Posts'
+import Post, {getPost} from './features/blog/Post'
+import CV, {getCV} from './features/cv'
 import {postContactAction} from './components/Contact'
 import ErrorPage from './features/errorpage'
 import reportWebVitals from './reportWebVitals'
@@ -32,17 +32,17 @@ const router = createBrowserRouter([
       }
       , {
         path: '/blog'
-        , element: <PostsController />
+        , element: <Posts />
         , loader: getPosts
       }
       , {
         path: '/blog/:slug'
-        , element: <PostController />
+        , element: <Post />
         , loader: getPost
       }
       , {
         path: '/cv'
-        , element: <CVController />
+        , element: <CV />
         , loader: getCV
       }
     ]

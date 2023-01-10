@@ -30,14 +30,14 @@ export function getPost({params}: LoaderFunctionArgs) {
   return get(`/custom/v0/posts/${params.slug}`)
 }
 
-export default function PostController() {
+export default function Post() {
   const post             = useLoaderData() as PostInterface
   const title            = post.title.rendered
   const content          = post.content.rendered
   const featuredMediaUrl = post.featured_media_url
 
   return <BlogContainer>
-    <Post
+    <PostComponent
       title={title}
       content={content}
       featuredMediaUrl={featuredMediaUrl}
@@ -46,11 +46,11 @@ export default function PostController() {
         className="back"
         to={'/blog/'}
       ><BackIcon /></Link>
-    </Post>
+    </PostComponent>
   </BlogContainer>
 }
 
-export function Post(props: {
+export function PostComponent(props: {
     title: string
     , content: string
     , featuredMediaUrl: string

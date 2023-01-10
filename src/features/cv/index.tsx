@@ -185,7 +185,7 @@ export async function getCV() {
   }
 }
 
-export default function CVController() {
+export default function CV() {
   // FIXME check contact class on other page
   return <CVContainer>
     <>
