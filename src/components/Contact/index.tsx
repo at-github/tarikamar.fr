@@ -57,32 +57,8 @@ export default function Contact() {
     status: string
     , invalid_fields: {field: string, message: string}[]
   } | undefined
-  console.log({postContactResponse})
-  const [email, setEmail] = useState({edited: false, valid: false})
 
-  if (postContactResponse?.status === 'mail_sent')
-    return <Thanking />
-
-  const state = {
-    email: {
-      edited: false
-      , valid: false
-    }
-    , message: {
-      edited: false
-      , valid: false
-    }
-    , form: {
-      state: ''
-    }
-  }
-
-  if (postContactResponse) {
-    state.email.edited = true
-    state.message.edited = true
-  }
-
-  let emailErrorFromApi = false
+  let emailErrorFromApi   = false
   let messageErrorFromApi = false
 
   postContactResponse?.invalid_fields.forEach((field: any) => {
@@ -93,31 +69,66 @@ export default function Contact() {
       messageErrorFromApi = true
   })
 
-  console.log(emailErrorFromApi)
+  const [email, setEmail] = useState(() => ({
+    edited: false
+    , valid: false
+  }))
 
-  const handleChangeEmail = () => {
-    console.log('handleChangeEmail')
-  }
-  const handleBlurEmail = () => {
-    console.log('handleBlurEmail')
+  const [message, setMessage] = useState(() => ({
+    edited: false
+    , valid: false
+  }))
+
+  if (postContactResponse?.status === 'mail_sent')
+    return <Thanking />
+
+  const state = {
+    form: {
+      state: ''
+    }
   }
 
-  const handleChangeMessage = () => {
-    console.log('handleChangeMessage')
+  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const email = e.target.value
+    const valid = Boolean(
+      email.match(
+        /^[a-z0-9.+!#$%&'*-/=?^_`{}|]+@[a-z0-9.-]{2,63}\.[a-z]{2,}$/i
+      )
+    )
+    // Do not disturb user on typing
+    // so dont check if dont mark email as edited now
+    // First typing email should not warn on first letters
+    setEmail(prev => ({...prev, ...{valid}}))
   }
-  const handleBlurMessage = () => {
-    console.log('handleBlurMessage')
+
+  const handleBlurEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const email = e.target.value
+    setEmail(prev => ({...prev, ...{edited: email !== ''}}))
+  }
+
+  const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const message = e.target.value
+    const valid = Boolean(
+      message.match(/^.+\s.+\s.+$/)
+    )
+    // Do not disturb user on typing
+    // so dont check if dont mark message as edited now
+    // First typing message should not warn on first letters
+    setMessage(prev => ({...prev, ...{valid}}))
+  }
+  const handleBlurMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const message = e.target.value
+    setMessage(prev => ({...prev, ...{edited: message !== ''}}))
   }
 
   return(
     <Form method="post" id="contact">
-      <div className="form-row">
-        <label
-          className={`error${
-            emailErrorFromApi ?
-              ' visible' : ''
-          }`}
-        >
+      <div className={
+        `form-row
+          ${email.edited || emailErrorFromApi ? 'edited' : ''}
+          ${!email.valid && emailErrorFromApi ? 'not-valid' : ''}
+      `}>
+        <label className="error">
           <AlarmIcon />
           Désolé mais un email valide est requis
         </label>
@@ -128,22 +139,15 @@ export default function Contact() {
           placeholder="Votre email"
           onChange={handleChangeEmail}
           onBlur={handleBlurEmail}
-          className={
-            `${state.email.edited ? 'email-edited' : ''}`
-            + ` ${!emailErrorFromApi ?
-              'email-is-valid'
-              : 'email-not-valid'}`
-          }
         />
       </div>
 
-      <div className="form-row">
-        <label
-          className={`error${
-            messageErrorFromApi ?
-              ' visible' : ''
-          }`}
-        >
+      <div className={
+        `form-row
+          ${message.edited || messageErrorFromApi ? 'edited' : ''}
+          ${!message.valid && messageErrorFromApi ? 'not-valid' : ''}
+      `}>
+        <label className="error">
           <AlarmIcon />
           Quelques mots pour décrire notre prise de contact peut-être ?
         </label>
@@ -154,12 +158,6 @@ export default function Contact() {
           cols={45}
           onChange={handleChangeMessage}
           onBlur={handleBlurMessage}
-          className={
-            `${state.message.edited ? 'message-edited' : ''} `
-            + `${!messageErrorFromApi ?
-              'message-is-valid'
-              : 'message-not-valid'}`
-          }
         />
       </div>
 

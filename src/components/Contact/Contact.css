@@ -26,6 +26,13 @@ label {
   display: block;
 }
 
+/** Cant overwrite background on webkit **/
+/** https://developer.mozilla.org/en-US/docs/Web/CSS/:autofill **/
+*:autofill {
+  background-color: white!important;
+}
+
+/** ERRORS **/
 label.error {
   color: #5c3d3d;
   display: none;
@@ -41,14 +48,15 @@ label.error svg {
   vertical-align: bottom;
 }
 
-label.error.visible {
-  display: block;
-}
-
-.email-edited.email-not-valid,
-.message-edited.message-not-valid {
+.form-row.edited.not-valid label,
+.form-row.edited.not-valid input,
+.form-row.edited.not-valid textarea {
   border-left: 5px solid #dd0505;
   padding-left: 10px;
+}
+
+.form-row.edited.not-valid label.error {
+  display: block;
 }
 
 /** NEXUS 7 **/
