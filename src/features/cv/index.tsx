@@ -1,13 +1,15 @@
 import {useState} from 'react'
 import {ActionFunctionArgs, useLoaderData} from 'react-router-dom'
-import {get, postContact} from '../../services/api'
-import bisectArray from '../../services/bisectArray'
+
 import {ExperienceAPIInterface, Experience} from './Experience'
 import {FormationAPIInterface, Formation} from './Formation'
 import Contact from '../../components/Contact'
-
 import CVContainer from './CVContainer'
 import Accordion from '../../components/Accordion'
+
+import {postContactWithSubject} from '../../services/postContactWithSubject'
+import {get} from '../../services/api'
+import bisectArray from '../../services/bisectArray'
 
 import './CV.css'
 
@@ -26,10 +28,10 @@ interface ExperienceElementInterface {
 export async function postContactFromCVAction(
   {request}: ActionFunctionArgs
 ) {
-  const formData = await request.formData()
-  formData.append('your-subject', 'À propos de votre CV')
-
-  return postContact(formData).then(response => response)
+  return postContactWithSubject(
+    await request.formData(),
+    'À propos de votre CV'
+  )
 }
 
 function prepareListExperiences(

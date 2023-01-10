@@ -1,8 +1,9 @@
 import {ActionFunctionArgs, useLoaderData} from 'react-router-dom'
 
-import {get} from '../../services/api'
 import Contact from '../../components/Contact'
-import {postContact} from '../../services/api'
+
+import {get} from '../../services/api'
+import {postContactWithSubject} from '../../services/postContactWithSubject'
 
 import './Services.css'
 
@@ -19,10 +20,10 @@ export function getServices() {
 export async function postContactFromServicesAction(
   {request}: ActionFunctionArgs
 ) {
-  const formData = await request.formData()
-  formData.append('your-subject', 'Concernant vos services')
-
-  return postContact(formData).then(response => response)
+  return postContactWithSubject(
+    await request.formData(),
+    'Concernant vos services'
+  )
 }
 
 export default function Services() {

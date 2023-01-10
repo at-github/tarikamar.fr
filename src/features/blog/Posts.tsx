@@ -1,8 +1,10 @@
 import {ActionFunctionArgs, Link, useLoaderData} from 'react-router-dom'
-import {PostInterface, PostComponent} from './Post'
-import {get, postContact} from '../../services/api'
 
+import {PostInterface, PostComponent} from './Post'
 import BlogContainer from './BlogContainer'
+
+import {postContactWithSubject} from '../../services/postContactWithSubject'
+import {get} from '../../services/api'
 
 import './Blog.css'
 
@@ -13,10 +15,10 @@ export function getPosts() {
 export async function postContactFromPostsAction(
   {request}: ActionFunctionArgs
 ) {
-  const formData = await request.formData()
-  formData.append('your-subject', 'Concernant le blog')
-
-  return postContact(formData).then(response => response)
+  return postContactWithSubject(
+    await request.formData(),
+    'Concernant le blog'
+  )
 }
 
 export default function Posts() {

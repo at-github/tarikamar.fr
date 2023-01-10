@@ -6,9 +6,10 @@ import {
 } from 'react-router-dom'
 
 import BlogContainer from './BlogContainer'
-import {get, postContact} from '../../services/api'
-
 import BackIcon from '../../components/Icons/BackIcon'
+
+import { postContactWithSubject } from '../../services/postContactWithSubject'
+import {get} from '../../services/api'
 
 import './Blog.css'
 
@@ -29,10 +30,11 @@ export async function postContactFromPostAction(
   {request}: ActionFunctionArgs
 ) {
   const [, slug] = window.location.href.split('.fr')
-  const formData = await request.formData()
-  formData.append('your-subject', `À propos de l’article : ${slug}`)
 
-  return postContact(formData).then(response => response)
+  return postContactWithSubject(
+    await request.formData(),
+    `À propos de l’article : ${slug}`
+  )
 }
 
 export function getPost({params}: LoaderFunctionArgs) {

@@ -36,7 +36,7 @@ const router = createBrowserRouter([
     , errorElement: <ErrorPage />
     , children: [
       {
-        index: true
+        path: '/' // index: true make submit action redirect to ?index
         , element: <Services />
         , loader: getServices
         , action: postContactFromServicesAction
