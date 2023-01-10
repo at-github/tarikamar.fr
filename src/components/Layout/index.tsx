@@ -6,7 +6,7 @@ import  useIntersectionObserver from '../../hooks/useIntersectionObserver'
 
 import './Layout.css'
 
-export default function Layout() {
+export default function Layout(props: {children?: React.ReactNode}) {
   const ref = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(ref, {})
   let menuVisible = true
@@ -17,6 +17,7 @@ export default function Layout() {
     <>
       <Menu ref={ref}/>
       <Outlet />
+      {props.children}
       <Footer scrollTopVisible={!menuVisible}/>
     </>
   )

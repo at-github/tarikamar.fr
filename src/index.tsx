@@ -11,7 +11,7 @@ import PostsController, {getPosts} from './features/blog/Posts'
 import PostController, {getPost} from './features/blog/Post'
 import CVController, {getCV} from './features/cv'
 import {postContactAction} from './components/Contact'
-import NotFound from './features/notfound'
+import ErrorPage from './features/errorpage'
 import reportWebVitals from './reportWebVitals'
 
 const rootElement = document.getElementById('root')
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   {
     path: '/'
     , element: <Layout />
-    , errorElement: <NotFound />
+    , errorElement: <ErrorPage />
     , children: [
       {
         index: true
