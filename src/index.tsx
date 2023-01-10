@@ -10,6 +10,7 @@ import Services, {getServices} from './features/services'
 import PostsController, {getPosts} from './features/blog/Posts'
 import PostController, {getPost} from './features/blog/Post'
 import CVController, {getCV} from './features/cv'
+import {postContactAction} from './components/Contact'
 import NotFound from './features/notfound'
 import reportWebVitals from './reportWebVitals'
 
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
         index: true
         , element: <Services />
         , loader: getServices
+        , action: postContactAction
       }
       , {
         path: '/blog'

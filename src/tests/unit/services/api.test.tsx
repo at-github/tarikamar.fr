@@ -4,11 +4,10 @@ import {postContact, get} from '../../../services/api'
 jest.mock('../../../services/myFetch');  // create an auto-mock of the module
 
 test('postContact call', () => {
-  const callback = jest.fn()
 
   const body = new FormData()
   body.append('key', 'value')
-  postContact(body, callback)
+  postContact(body)
 
   expect(myFetch).toHaveBeenCalledTimes(1)
   expect(myFetch).toHaveBeenCalledWith(
@@ -16,7 +15,6 @@ test('postContact call', () => {
     {
       body
       , method: 'POST'
-      , callback
     }
   )
 })
