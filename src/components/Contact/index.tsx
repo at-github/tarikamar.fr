@@ -8,28 +8,6 @@ import AlarmIcon from '../Icons/AlarmIcon'
 
 import './Contact.css'
 
-interface InterfaceProps {}
-
-enum EnumFormState {
-  none = 'none',
-  processing = 'processing',
-  sent = 'sent'
-}
-
-interface InterfaceState {
-  email: {
-    edited: boolean
-    , value: string
-    , valid: boolean
-  }, message: {
-    edited: boolean
-    , value: string
-    , valid: boolean
-  }, form: {
-    state: EnumFormState
-  }
-}
-
 export async function postContactAction({request} : ActionFunctionArgs) {
   const formData = await request.formData()
 
@@ -52,21 +30,92 @@ function Thanking() {
   )
 }
 
+function ContactForm(props: {
+  email: {edited: boolean, valid: boolean}
+  , message: {edited: boolean, valid: boolean}
+  , errorsFromApi: {email: boolean, message: boolean}
+  , handleChangeEmail: React.ChangeEventHandler<HTMLInputElement>
+  , handleBlurEmail: React.ChangeEventHandler<HTMLInputElement>
+  , handleChangeMessage: React.ChangeEventHandler<HTMLTextAreaElement>
+  , handleBlurMessage: React.ChangeEventHandler<HTMLTextAreaElement>
+}) {
+  const {
+    email
+    , message
+    , errorsFromApi
+    , handleChangeEmail
+    , handleBlurEmail
+    , handleChangeMessage
+    , handleBlurMessage
+  } = props
+
+  return (
+    <Form method="post" id="contact">
+      <div className={
+        `form-row
+          ${email.edited || errorsFromApi.email ? 'edited' : ''}
+          ${!email.valid || errorsFromApi.email ? 'not-valid' : ''}
+        `}>
+        <label className="error">
+          <AlarmIcon />
+          Désolé mais un email valide est requis
+        </label>
+
+        <input
+          type="email"
+          name="your-email"
+          placeholder="Votre email"
+          onChange={handleChangeEmail}
+          onBlur={handleBlurEmail}
+        />
+      </div>
+
+      <div className={
+        `form-row
+          ${message.edited || errorsFromApi.message ? 'edited' : ''}
+          ${!message.valid || errorsFromApi.message ? 'not-valid' : ''}
+        `}>
+        <label className="error">
+          <AlarmIcon />
+          Quelques mots pour décrire notre prise de contact peut-être ?
+        </label>
+        <textarea
+          name="your-message"
+          placeholder="Donnez moi une idée de l’aide dont vous avez besoin"
+          rows={4}
+          cols={45}
+          onChange={handleChangeMessage}
+          onBlur={handleBlurMessage}
+        />
+      </div>
+
+      <div className="form-row">
+        <CTA
+          disabled={!(email.valid && message.valid)}
+          text="Contactez-moi"
+        />
+      </div>
+    </Form>
+  )
+}
+
 export default function Contact() {
   const postContactResponse = useActionData() as {
     status: string
     , invalid_fields: {field: string, message: string}[]
   } | undefined
 
-  let emailErrorFromApi   = false
-  let messageErrorFromApi = false
+  let errorsFromApi = {
+    email: false
+    , message: false
+  }
 
   postContactResponse?.invalid_fields.forEach((field: any) => {
     if (field.field === 'your-email')
-      emailErrorFromApi = true
+      errorsFromApi.email = true
 
     if (field.field === 'your-message')
-      messageErrorFromApi = true
+      errorsFromApi.message = true
   })
 
   const [email, setEmail] = useState(() => ({
@@ -81,12 +130,6 @@ export default function Contact() {
 
   if (postContactResponse?.status === 'mail_sent')
     return <Thanking />
-
-  const state = {
-    form: {
-      state: ''
-    }
-  }
 
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const email = e.target.value
@@ -121,52 +164,17 @@ export default function Contact() {
     setMessage(prev => ({...prev, ...{edited: message !== ''}}))
   }
 
-  return(
-    <Form method="post" id="contact">
-      <div className={
-        `form-row
-          ${email.edited || emailErrorFromApi ? 'edited' : ''}
-          ${!email.valid && emailErrorFromApi ? 'not-valid' : ''}
-      `}>
-        <label className="error">
-          <AlarmIcon />
-          Désolé mais un email valide est requis
-        </label>
-
-        <input
-          type="email"
-          name="your-email"
-          placeholder="Votre email"
-          onChange={handleChangeEmail}
-          onBlur={handleBlurEmail}
-        />
-      </div>
-
-      <div className={
-        `form-row
-          ${message.edited || messageErrorFromApi ? 'edited' : ''}
-          ${!message.valid && messageErrorFromApi ? 'not-valid' : ''}
-      `}>
-        <label className="error">
-          <AlarmIcon />
-          Quelques mots pour décrire notre prise de contact peut-être ?
-        </label>
-        <textarea
-          name="your-message"
-          placeholder="Donnez moi une idée de l’aide dont vous avez besoin"
-          rows={4}
-          cols={45}
-          onChange={handleChangeMessage}
-          onBlur={handleBlurMessage}
-        />
-      </div>
-
-      <div className="form-row">
-        <CTA
-          disabled={!(email.valid && message.valid)}
-          text="Contactez-moi"
-        />
-      </div>
-    </Form>
-  )
+  return <ContactForm
+    {
+      ...{
+        email
+        , message
+        , errorsFromApi
+        , handleChangeEmail
+        , handleBlurEmail
+        , handleChangeMessage
+        , handleBlurMessage
+      }
+    }
+  />
 }
