@@ -65,7 +65,7 @@ function setCollection(experiences: ExperienceElementInterface[]) {
 
   let collectionIndex = 0
 
-  return experiences.map((experience, index) => {
+  return experiences.map(experience => {
     const {company}                  = experience
     const {company: previousCompany} = previousExperience
 
@@ -118,7 +118,7 @@ function Experiences() {
         titleToHide="Masquer quelques expériences"
       >
         {experiencesToHide.map((
-          xp: ExperienceElementInterface, index: number
+          xp: ExperienceElementInterface
         ) => {
           return <Experience
             title={xp.title}
@@ -197,7 +197,6 @@ export async function getCV() {
 }
 
 export default function CV() {
-  // FIXME check contact class on other page
   return <CVContainer>
     <>
       <Experiences />
