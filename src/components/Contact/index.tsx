@@ -31,6 +31,7 @@ function ContactForm(props: {
   , handleBlurEmail: React.ChangeEventHandler<HTMLInputElement>
   , handleChangeMessage: React.ChangeEventHandler<HTMLTextAreaElement>
   , handleBlurMessage: React.ChangeEventHandler<HTMLTextAreaElement>
+  , messagePlaceholder?: string
 }) {
   const {
     email
@@ -40,6 +41,7 @@ function ContactForm(props: {
     , handleBlurEmail
     , handleChangeMessage
     , handleBlurMessage
+    , messagePlaceholder
   } = props
 
   return (
@@ -74,7 +76,7 @@ function ContactForm(props: {
         </label>
         <textarea
           name="your-message"
-          placeholder="Donnez moi une idée de l’aide dont vous avez besoin"
+          placeholder={messagePlaceholder ?? '…'}
           rows={4}
           cols={45}
           onChange={handleChangeMessage}
@@ -92,7 +94,8 @@ function ContactForm(props: {
   )
 }
 
-export default function Contact() {
+export default function Contact(props: {messagePlaceholder?: string}) {
+  const {messagePlaceholder} = props
   const postContactResponse = useActionData() as {
     status: string
     , invalid_fields: {field: string, message: string}[]
@@ -167,6 +170,7 @@ export default function Contact() {
         , handleBlurEmail
         , handleChangeMessage
         , handleBlurMessage
+        , messagePlaceholder
       }
     }
   />
