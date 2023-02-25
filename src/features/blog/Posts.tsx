@@ -1,12 +1,8 @@
-import {ActionFunctionArgs, Link, useLoaderData} from 'react-router-dom'
-
-import {PostInterface, PostComponent} from './Post'
-import BlogContainer from './BlogContainer'
-
-import {postContactWithSubject} from '../../services/postContactWithSubject'
-import {get} from '../../services/api'
-
 import './Blog.css'
+import {ActionFunctionArgs, Link} from 'react-router-dom'
+import {PostInterface, PostComponent} from './Post'
+import {get} from '../../services/api'
+import {postContactWithSubject} from '../../services/postContactWithSubject'
 
 export function getPosts() {
   return get('/wp/v2/posts')
@@ -21,26 +17,24 @@ export async function postContactFromPostsAction(
   )
 }
 
-export default function Posts() {
-  const posts = useLoaderData() as PostInterface[]
+export default function Posts(props: {posts: PostInterface[]}) {
+  const {posts} = props
 
   return (
-    <BlogContainer>
-      <>
-        {posts.map((post: PostInterface) => {
-          return <PostComponent
-            title={post.title.rendered}
-            content={post.excerpt_read_more}
-            featuredMediaUrl={post.featured_media_url}
-            key={post.id}
-          >
-            <Link
-              className="read-more"
-              to={`/blog/${post.slug}`}
-            >…</Link>
-          </PostComponent>
-        })}
-      </>
-    </BlogContainer>
+    <>
+      {posts.map((post: PostInterface) => {
+        return <PostComponent
+          title={post.title.rendered}
+          content={post.excerpt_read_more}
+          featuredMediaUrl={post.featured_media_url}
+          key={post.id}
+        >
+          <Link
+            className="read-more"
+            to={`/blog/${post.slug}`}
+          >…</Link>
+        </PostComponent>
+      })}
+    </>
   )
 }

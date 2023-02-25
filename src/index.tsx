@@ -11,9 +11,11 @@ import Services, {
   getServices
   , postContactFromServicesAction
 } from './features/services'
-import Posts, {
+import Blog, {
   getPosts,
-  postContactFromPostsAction
+} from './features/blog'
+import {
+  postContactFromPostsAction,
 } from './features/blog/Posts'
 import Post, {
   getPost
@@ -43,7 +45,7 @@ const router = createBrowserRouter([
       }
       , {
         path: '/blog'
-        , element: <Posts />
+        , element: <Blog />
         , loader: getPosts
         , action: postContactFromPostsAction
       }
