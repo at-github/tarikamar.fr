@@ -2,29 +2,14 @@ import reportWebVitals from './reportWebVitals'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import {
-  createBrowserRouter
-  , RouterProvider
-} from 'react-router-dom'
+import {createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
-import Services, {
-  getServices
-  , postContactFromServicesAction
-} from './features/services'
-import Blog, {
-  getPosts,
-} from './features/blog'
-import {
-  postContactFromPostsAction,
-} from './features/blog/Posts'
-import Post, {
-  getPost
-  , postContactFromPostAction
-} from './features/blog/Post'
-import CV, {
-  getCV
-  , postContactFromCVAction
-} from './features/cv'
+import Services, {getServices, postContactFromServicesAction} from './features/services'
+import Blog, {getPosts} from './features/blog'
+import ShowPost, {getPost} from './features/blog/Show'
+import {postContactFromPostsAction} from './features/blog/Posts'
+import {postContactFromPostAction} from './features/blog/Post'
+import CV, {getCV, postContactFromCVAction} from './features/cv'
 import ErrorPage from './features/errorpage'
 
 const rootElement = document.getElementById('root')
@@ -38,7 +23,7 @@ const router = createBrowserRouter([
     , errorElement: <ErrorPage />
     , children: [
       {
-        path: '/' // index: true make submit action redirect to ?index
+        path: '/' // index: true -> make submit action redirect to ?index
         , element: <Services />
         , loader: getServices
         , action: postContactFromServicesAction
@@ -51,7 +36,7 @@ const router = createBrowserRouter([
       }
       , {
         path: '/blog/:slug'
-        , element: <Post />
+        , element: <ShowPost />
         , loader: getPost
         , action: postContactFromPostAction
       }

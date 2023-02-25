@@ -1,17 +1,6 @@
-import {
-  ActionFunctionArgs
-  , Link
-  , LoaderFunctionArgs
-  , useLoaderData
-} from 'react-router-dom'
-
-import BlogContainer from './BlogContainer'
-import BackIcon from '../../components/Icons/BackIcon'
-
-import { postContactWithSubject } from '../../services/postContactWithSubject'
-import {get} from '../../services/api'
-
 import './Blog.css'
+import {postContactWithSubject} from '../../services/postContactWithSubject'
+import {ActionFunctionArgs} from 'react-router-dom'
 
 export interface PostInterface {
   id: number
@@ -37,37 +26,13 @@ export async function postContactFromPostAction(
   )
 }
 
-export function getPost({params}: LoaderFunctionArgs) {
-  return get(`/custom/v0/posts/${params.slug}`)
-}
-
 function FeaturedImage(props: {src: string, alt: string}) {
   return <div className="featured-image">
     <img src={props.src} alt={props.alt} />
   </div>
 }
 
-export default function Post() {
-  const post             = useLoaderData() as PostInterface
-  const title            = post.title.rendered
-  const content          = post.content.rendered
-  const featuredMediaUrl = post.featured_media_url
-
-  return <BlogContainer>
-    <PostComponent
-      title={title}
-      content={content}
-      featuredMediaUrl={featuredMediaUrl}
-    >
-      <Link
-        className="back"
-        to={'/blog/'}
-      ><BackIcon /></Link>
-    </PostComponent>
-  </BlogContainer>
-}
-
-export function PostComponent(props: {
+export default function Post(props: {
     title: string
     , content: string
     , featuredMediaUrl: string

@@ -1,6 +1,6 @@
 import './Blog.css'
 import {ActionFunctionArgs, Link} from 'react-router-dom'
-import {PostInterface, PostComponent} from './Post'
+import Post, {PostInterface} from './Post'
 import {get} from '../../services/api'
 import {postContactWithSubject} from '../../services/postContactWithSubject'
 
@@ -23,7 +23,7 @@ export default function Posts(props: {posts: PostInterface[]}) {
   return (
     <>
       {posts.map((post: PostInterface) => {
-        return <PostComponent
+        return <Post
           title={post.title.rendered}
           content={post.excerpt_read_more}
           featuredMediaUrl={post.featured_media_url}
@@ -33,7 +33,7 @@ export default function Posts(props: {posts: PostInterface[]}) {
             className="read-more"
             to={`/blog/${post.slug}`}
           >…</Link>
-        </PostComponent>
+        </Post>
       })}
     </>
   )
