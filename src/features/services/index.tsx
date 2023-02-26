@@ -40,7 +40,9 @@ export default function Services() {
       <div className="big-row contact">
         <div>
           <h1>Intéressé ?</h1>
-          <Contact messagePlaceholder="Donnez moi une idée de l’aide dont vous avez besoin" />
+          <Contact
+            messagePlaceholder="Donnez moi une idée de l’aide dont vous avez besoin"
+          />
         </div>
       </div>
     </div>

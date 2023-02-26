@@ -23,6 +23,17 @@ function Thanking() {
   )
 }
 
+function buildInputStatusClass(
+  prefix: string,
+  inputStatus: {edited: boolean, valid: boolean},
+  apiStatus: boolean): string {
+
+  return `${prefix}
+    ${inputStatus.edited || apiStatus ? 'edited'    : ''}
+    ${!inputStatus.valid || apiStatus ? 'not-valid' : ''}
+  `.replace(/\n/g, ' ').replace(/ {2,}/g, ' ')
+}
+
 function ContactForm(props: {
   email: {edited: boolean, valid: boolean}
   , message: {edited: boolean, valid: boolean}
@@ -47,10 +58,8 @@ function ContactForm(props: {
   return (
     <Form method="post" id="contact">
       <div className={
-        `form-row
-          ${email.edited || errorsFromApi.email ? 'edited' : ''}
-          ${!email.valid || errorsFromApi.email ? 'not-valid' : ''}
-        `}>
+        buildInputStatusClass('form-row', email, errorsFromApi.email)
+      }>
         <label className="error">
           <AlarmIcon />
           Désolé mais un email valide est requis
@@ -66,10 +75,8 @@ function ContactForm(props: {
       </div>
 
       <div className={
-        `form-row
-          ${message.edited || errorsFromApi.message ? 'edited' : ''}
-          ${!message.valid || errorsFromApi.message ? 'not-valid' : ''}
-        `}>
+        buildInputStatusClass('form-row', message, errorsFromApi.message)
+      }>
         <label className="error">
           <AlarmIcon />
           Quelques mots pour décrire notre prise de contact peut-être ?
@@ -135,7 +142,7 @@ export default function Contact(props: {messagePlaceholder?: string}) {
       )
     )
     // Do not disturb user on typing
-    // so dont check if dont mark email as edited now
+    // so dont check display error until is blur
     // First typing email should not warn on first letters
     setEmail(prev => ({...prev, ...{valid}}))
   }
@@ -151,10 +158,11 @@ export default function Contact(props: {messagePlaceholder?: string}) {
       message.match(/^.+\s.+\s.+$/)
     )
     // Do not disturb user on typing
-    // so dont check if dont mark message as edited now
+    // so dont check if display error until is blur
     // First typing message should not warn on first letters
     setMessage(prev => ({...prev, ...{valid}}))
   }
+
   const handleBlurMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const message = e.target.value
     setMessage(prev => ({...prev, ...{edited: message !== ''}}))
