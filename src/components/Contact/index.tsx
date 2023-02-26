@@ -1,11 +1,8 @@
+import './Contact.css'
+import AlarmIcon from '../Icons/AlarmIcon'
+import CTA from '../CTA'
 import React, { useState } from 'react'
 import {Form, useActionData} from 'react-router-dom';
-
-import CTA from '../CTA'
-
-import AlarmIcon from '../Icons/AlarmIcon'
-
-import './Contact.css'
 
 function Thanking() {
   return (
@@ -103,23 +100,11 @@ function ContactForm(props: {
 
 export default function Contact(props: {messagePlaceholder?: string}) {
   const {messagePlaceholder} = props
+
   const postContactResponse = useActionData() as {
     status: string
     , invalid_fields: {field: string, message: string}[]
   } | undefined
-
-  let errorsFromApi = {
-    email: false
-    , message: false
-  }
-
-  postContactResponse?.invalid_fields.forEach((field: any) => {
-    if (field.field === 'your-email')
-      errorsFromApi.email = true
-
-    if (field.field === 'your-message')
-      errorsFromApi.message = true
-  })
 
   const [email, setEmail] = useState(() => ({
     edited: false
@@ -131,8 +116,21 @@ export default function Contact(props: {messagePlaceholder?: string}) {
     , valid: false
   }))
 
+  let errorsFromApi = {
+    email: false
+    , message: false
+  }
+
   if (postContactResponse?.status === 'mail_sent')
     return <Thanking />
+
+  postContactResponse?.invalid_fields.forEach((field: any) => {
+    if (field.field === 'your-email')
+      errorsFromApi.email = true
+
+    if (field.field === 'your-message')
+      errorsFromApi.message = true
+  })
 
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const email = e.target.value
