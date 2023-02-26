@@ -2,6 +2,7 @@ import './Contact.css'
 import AlarmIcon from '../Icons/AlarmIcon'
 import CTA from '../CTA'
 import React, { useState } from 'react'
+import Thanking from './Thanking'
 import {Form, useActionData} from 'react-router-dom'
 import {buildInputStatusClass} from './contactHelper'
 
@@ -91,22 +92,6 @@ export default function Contact(props: {messagePlaceholder?: string}) {
       }
     }
   />
-}
-
-function Thanking() {
-  return (
-    <div className="thanking">
-      <p>
-        <img
-          src="/img/confetti-outline.apng"
-          width="200px"
-          height="200px"
-          alt="Message envoyé !"
-        />
-      </p>
-      <h3>À bientôt</h3>
-    </div>
-  )
 }
 
 function ContactForm(props: {
