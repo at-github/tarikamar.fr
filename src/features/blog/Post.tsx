@@ -27,6 +27,9 @@ export async function postContactFromPostAction(
 }
 
 function FeaturedImage(props: {src: string, alt: string}) {
+  if (!props.src)
+    return null
+
   return <div className="featured-image">
     <img src={props.src} alt={props.alt} />
   </div>
