@@ -14,9 +14,10 @@ export default function ErrorPage() {
           width="400px"
           height="200px"
           src="/img/error.svg"
+          style={{maxWidth: '400px', width: '100%'}}
         />
       </p>
-      <h2 style={{textAlign: 'center'}}>{error.statusText || error.message}</h2>
+      <h2 style={{textAlign: 'center'}}>Désolé, une pétouille est survenue</h2>
     </Layout>
   )
 }

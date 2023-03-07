@@ -8,6 +8,9 @@ const myFetch = (
 ) => {
   const domain = process.env.REACT_APP_API_DOMAIN
 
+  if (!domain)
+    throw new Error('"domain" is not defined')
+
   return fetch(
     `${domain}${route}`
     , {
