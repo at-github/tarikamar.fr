@@ -7,6 +7,7 @@ const myFetch = (
     }
 ) => {
   const domain = process.env.REACT_APP_API_DOMAIN
+  const env = process.env.NODE_ENV
 
   if (!domain)
     throw new Error('"domain" is not defined')
@@ -14,7 +15,7 @@ const myFetch = (
   return fetch(
     `${domain}${route}`
     , {
-      credentials: 'include'
+      credentials: env === 'development' ? 'omit' : 'include'
       , mode: 'cors'
       , method: options && options.method ? options.method : 'GET'
       , body: options && options.body ? options.body : null
