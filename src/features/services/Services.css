@@ -2,7 +2,7 @@
 .services ul, .services ol {
   margin: 0;
   padding: 0 0 0 30px;
-  line-height: 20px;
+  line-height: 30px;
 }
 
 /** MAIN TITLE **/
@@ -100,7 +100,7 @@ h1#title-main span {
   }
 
   .solutions .solution {
-    background-position: 20% 100%;
+    background-position: 20% 50%;
   }
 
   /** ABOUT ME **/
@@ -121,7 +121,7 @@ h1#title-main span {
 @media (max-width: 376px) {
   /** SOLUTIONS **/
   .solutions .solution {
-    background-position: 15% 40px;
+    background-position: 15% 30px;
   }
 
   /** ABOUT ME **/
