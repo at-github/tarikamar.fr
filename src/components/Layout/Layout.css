@@ -31,13 +31,14 @@ body > * {
 }
 
 p {
-  padding: 5px 10px;
+  padding: 5px 0;
   line-height: 2rem;
+  margin: 20px 0;
 }
 
 ul, ol {
   margin: 0;
-  padding: 0 0 0 30px;
+  padding: 20px 0 0 20px;
   line-height: 2rem;
 }
 
@@ -122,6 +123,17 @@ button:disabled,
   background-color: #555;
   color: #DDD;
   cursor: default;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+/** WORDPRESS COLUMNS **/
+.wp-block-columns {
+  display: flex;
+  column-gap: 50px;
+  padding: 0;
 }
 
 @media (min-width: 1024px) {

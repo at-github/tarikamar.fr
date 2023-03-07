@@ -1,4 +1,10 @@
-.blog p, .blog ul, .blog ol, .featured-image, figure, h3 {
+.blog p,
+.blog ul,
+.blog ol,
+.featured-image,
+figure,
+h3,
+iframe {
   scroll-snap-align: start;
 }
 
@@ -58,6 +64,10 @@ figcaption {
   margin-top: -5px;
 }
 
+.wp-block-column figure {
+  margin-top: 25px;
+}
+
 /** IPAD AIR portrait **/
 @media (max-width: 768px) {
   .featured-image {
@@ -79,3 +89,4 @@ figcaption {
     float: none;
   }
 }
+

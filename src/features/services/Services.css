@@ -21,13 +21,6 @@ h1#title-main span {
   text-align: center;
 }
 
-/** WORDPRESS COLUMNS **/
-.wp-block-columns {
-  display: flex;
-  column-gap: 50px;
-  padding: 0 20px;
-}
-
 .wp-block-column {
   flex: 1;
 }
